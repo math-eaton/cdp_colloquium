@@ -1,0 +1,29 @@
+body {
+    display: flex;
+    height: 100vh;
+    margin: 0;
+    overflow-x: scroll;
+    overflow-y: hidden;
+  }
+
+  /* .div {
+    position: absolute
+  } */
+
+  .draggable {
+    width: 100vw;
+    height: 100vh;
+    background-position: center;  /* Center the image */
+    background-repeat: no-repeat;  /* Do not repeat the image */
+    background-size: 75% 75%;  /* Stretch the image */
+    }
+  
+  @keyframes float {
+    0% { transform: translate(0, 0) }
+    50% { transform: translate(5px, 10px) }
+    100% { transform: translate(0, 0) }
+  }
+  
+  .draggable {
+    animation: float 5s ease-in-out infinite;
+  }
