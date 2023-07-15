@@ -1,14 +1,20 @@
   // Make divs draggable, floating, and randomly positioned
-  $(function() {
-    $(".draggable").each(function() {
-      // Calculate random positions within a certain range
-      var randomTop = Math.floor(Math.random() * 50);  // Random value from 0 to 50
-      var randomLeft = Math.floor(Math.random() * 50);  // Random value from 0 to 50
+  $(function()   {
+  var horizontalSpacing = 10; // change this value to increase or decrease the horizontal spacing between divs
+  var verticalRange = 10; // change this to increase or decrease the range of possible vertical positions
 
-      // Set the position
-      $(this).css({
-        'top': randomTop + 'vh',
-        'left': randomLeft + 'vw'
+  $(".draggable").each(function(index) {
+    // Calculate a random vertical position within the range
+    var randomTop = Math.floor(Math.random() * verticalRange);
+
+    // Calculate the left position based on the index of the div
+    var leftPosition = index * horizontalSpacing;
+
+    // Set the position
+    $(this).css({
+      'top': randomTop + 'vh',
+      'left': leftPosition + 'vw'
+
       });
     });
 
