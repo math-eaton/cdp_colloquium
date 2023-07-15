@@ -27,16 +27,22 @@
     var scrollLeft = $(this).scrollLeft(),
         windowWidth = $(this).width(),
         opacity;
-
+  
     $('.draggable').each(function() {
-      var leftDistance = $(this).offset().left;
-
-      if (leftDistance < scrollLeft) {
-        opacity = 1 - (scrollLeft - leftDistance) / windowWidth;
+      var leftDistance = $(this).offset().left,
+          divWidth = $(this).width(),
+          divCenter = leftDistance + (divWidth / 2),
+          windowCenter = scrollLeft + (windowWidth / 2),
+          distanceFromCenter = Math.abs(divCenter - windowCenter),
+          maxDistance = windowWidth / 2,
+          opacity;
+  
+      if (distanceFromCenter < maxDistance) {
+        opacity = 1 - (distanceFromCenter / maxDistance);
       } else {
-        opacity = 1 - (leftDistance - scrollLeft) / windowWidth;
+        opacity = 0;
       }
-
+  
       $(this).css('opacity', opacity);
     });
   });

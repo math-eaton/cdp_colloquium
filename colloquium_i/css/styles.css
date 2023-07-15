@@ -13,6 +13,7 @@ body {
   .draggable {
     width: 100vw;
     height: 100vh;
+    padding:5%;
     background-position: center;  /* Center the image */
     background-repeat: no-repeat;  /* Do not repeat the image */
     background-size: 75% 75%;  /* Stretch the image */
@@ -27,3 +28,12 @@ body {
   .draggable {
     animation: float 5s ease-in-out infinite;
   }
+
+  .GPT {
+    font-family: 'Courier New', Courier, monospace;
+  }
+  
+  .HUMAN {
+    font-family: 'Comic Sans MS', cursive, sans-serif;
+  }
+  
