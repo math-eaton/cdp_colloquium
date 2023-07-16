@@ -44,9 +44,9 @@
           opacity;
   
       if (distanceFromCenter < maxDistance) {
-        opacity = 1 - (distanceFromCenter / maxDistance);
+        opacity = 1.2 - (distanceFromCenter / maxDistance);
       } else {
-        opacity = 0;
+        opacity = 0.2;
       }
   
       $(this).css('opacity', opacity);
