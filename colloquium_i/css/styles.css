@@ -44,7 +44,6 @@ div {
   }
 
   h3 {
-    font-style: black;
     font-size: medium;
   }
 
@@ -62,8 +61,8 @@ div {
   }
   
   .human {
-    font-family: 'Roboto', sans-serif;
-    color: rgb(76, 0, 255);
+    font-family: Helvetica Neue,Helvetica,Arial,sans-serif; 
+    color: rgb(38, 55, 236);
     animation: float 4s ease-in-out infinite;
     text-align: right;
     opacity: 1;
