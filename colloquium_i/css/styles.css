@@ -30,7 +30,7 @@ div {
   
   @keyframes float {
     0% { transform: translate(0, 0) }
-    50% { transform: translate(-1px, 3px) }
+    50% { transform: translate(-3px, 5px) }
     100% { transform: translate(0, 0) }
   }
 
@@ -71,5 +71,5 @@ div {
   }
 
   #chart {
-    width: 100%;
+    width: 200%;
   }
