@@ -1,7 +1,7 @@
 // Make divs draggable, floating, and randomly positioned
 $(function() {
-  var horizontalSpacing = 12; // change this value to increase or decrease the horizontal spacing between divs
-  var verticalRange = 12; // change this to increase or decrease the range of possible vertical positions
+  var horizontalSpacing = 15; // change this value to increase or decrease the horizontal spacing between divs
+  var verticalRange = 6; // change this to increase or decrease the range of possible vertical positions
 
   $(".draggable").each(function(index) {
     // Calculate a random vertical position within the range
@@ -41,8 +41,8 @@ $(function() {
     $('.draggable').each(function() {
       var leftDistance = $(this).offset().left,
           divWidth = $(this).width(),
-          divCenter = leftDistance + (divWidth / 2),
-          windowCenter = scrollLeft + (windowWidth / 2),
+          divCenter = leftDistance + (divWidth / 1.5),
+          windowCenter = scrollLeft + (windowWidth / 1.5),
           distanceFromCenter = Math.abs(divCenter - windowCenter),
           maxDistance = windowWidth / 2,
           opacity;
