@@ -1,6 +1,7 @@
 body {
   display: flex;
   flex-direction: row; /* Stack divs side by side */
+  flex-basis: fit-content;
   height: 100vh;
   width: 100vw;
   padding: 1%;
@@ -67,4 +68,8 @@ div {
     animation: float 4s ease-in-out infinite;
     text-align: right;
     opacity: 1;
+  }
+
+  #chart {
+    width: 100%;
   }
