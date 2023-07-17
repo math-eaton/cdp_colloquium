@@ -1,10 +1,9 @@
 body {
   display: flex;
   flex-direction: row; /* Stack divs side by side */
-  /* flex-grow: 2; */
   height: 100vh;
   width: 100vw;
-  margin: 1%;
+  padding: 1%;
   overflow-x: scroll;
   overflow-y: hidden;
   align-content: flex-start;
@@ -39,13 +38,13 @@ div {
 
 
   h2 {
-    font-size:xx-large;
+    font-size:x-large;
     font-style:italic;
+    padding:2%;
   }
 
   h3 {
-    font-style: italic;
-    font-style: bold;
+    font-style: black;
     font-size: medium;
   }
 
@@ -66,4 +65,6 @@ div {
     font-family: 'Roboto', sans-serif;
     color: rgb(76, 0, 255);
     animation: float 4s ease-in-out infinite;
+    text-align: right;
+    opacity: 1;
   }
