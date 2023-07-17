@@ -60,16 +60,29 @@ div {
   
   .gpt {
     font-family: 'Roboto Mono', monospace;
+    font-size: 100%;
+
   }
   
   .human {
     font-family: Helvetica Neue,Helvetica,Arial,sans-serif; 
-    color: rgb(38, 55, 236);
     animation: float 4s ease-in-out infinite;
     text-align: right;
     opacity: 1;
+    color: rgb(38, 55, 236);
   }
 
   #chart {
     width: 200%;
   }
+
+  .inline-quote {
+    font-size: small;
+    font-weight: bold;
+    padding: 1%;
+    animation: float 7s ease-in-out infinite;
+    display: inline-block;
+    position: relative;
+    top: 10px; /* Adjust the top value to position it vertically */
+}
+ 
