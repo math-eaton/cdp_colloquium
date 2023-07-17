@@ -1,43 +1,65 @@
 body {
   display: flex;
   flex-direction: row; /* Stack divs side by side */
-  flex-grow: 2;
+  /* flex-grow: 2; */
   height: 100vh;
   width: 100vw;
-  margin: 0;
+  margin: 1%;
   overflow-x: scroll;
   overflow-y: hidden;
   align-content: flex-start;
 }
 
 .draggable {
-  padding: 2%;
   word-wrap: break-word;
   background-position: center;
   background-repeat: no-repeat;
-  animation: float 5s ease-in-out infinite;
+  /* animation: float 5s ease-in-out infinite; */
 }
 
 div {
+  padding: 5%;
   min-width: 33vw;
   max-width: 90;
   max-height: 90vh;
   word-wrap: break-word;
-
 }
   
   @keyframes float {
     0% { transform: translate(0, 0) }
-    50% { transform: translate(5px, 10px) }
+    50% { transform: translate(-1px, 3px) }
     100% { transform: translate(0, 0) }
+  }
+
+  p {
+    font-size: x-small;
+  }
+
+
+  h2 {
+    font-size:xx-large;
+    font-style:oblique;
+  }
+
+  h3 {
+    font-style: italic;
+    font-size: small;
+  }
+  
+  .gpt {
+    font-family: 'Roboto Mono', monospace;
+  }
+  
+  .human {
+    font-family: 'Roboto', sans-serif;
+    color: rgb(76, 0, 255);
+    animation: float 4s ease-in-out infinite;
   }
   
 
-  .GPT {
-    font-family: 'Courier New', Courier, monospace;
+  img {
+    animation: float 7s ease-in-out infinite;
+    padding: 3%;
+    max-width: 100%;
+    position:sticky;
   }
-  
-  .HUMAN {
-    font-family: 'Comic Sans MS', cursive, sans-serif;
-  }
-  

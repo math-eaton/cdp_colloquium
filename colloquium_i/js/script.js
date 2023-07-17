@@ -1,7 +1,7 @@
-  // Make divs draggable, floating, and randomly positioned
-  $(function()   {
-  var horizontalSpacing = 10; // change this value to increase or decrease the horizontal spacing between divs
-  var verticalRange = 10; // change this to increase or decrease the range of possible vertical positions
+// Make divs draggable, floating, and randomly positioned
+$(function() {
+  var horizontalSpacing = 12; // change this value to increase or decrease the horizontal spacing between divs
+  var verticalRange = 12; // change this to increase or decrease the range of possible vertical positions
 
   $(".draggable").each(function(index) {
     // Calculate a random vertical position within the range
@@ -12,21 +12,25 @@
 
     // Set the position
     $(this).css({
-      'top': randomTop + 'vh',
-      'left': leftPosition + 'vw'
-
-      });
+      top: randomTop + "vh",
+      left: leftPosition + "vw"
     });
 
-    $(".draggable").draggable({
-      start: function() {
-        $(this).css("animation", "none");
-      },
-      stop: function() {
-        $(this).css("animation", "float 5s ease-in-out infinite");
-      }
-    });
+    // Add a random delay to the animation
+    var randomDelay = Math.random() * 1; // Adjust the delay range as desired
+    $(this).css("animation-delay", randomDelay + "s");
   });
+
+  $(".draggable").draggable({
+    start: function() {
+      $(this).css("animation", "none");
+    },
+    stop: function() {
+      $(this).css("animation", "float 5s ease-in-out infinite");
+    }
+  });
+});
+
 
   // Change opacity based on scroll position
   $(window).scroll(function() {
@@ -44,9 +48,9 @@
           opacity;
   
       if (distanceFromCenter < maxDistance) {
-        opacity = 1.2 - (distanceFromCenter / maxDistance);
+        opacity = 1.5 - (distanceFromCenter / maxDistance);
       } else {
-        opacity = 0.2;
+        opacity = 0.5;
       }
   
       $(this).css('opacity', opacity);
