@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fake Google Images</title>
+  <style>
+    /* General styles */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+    .night-mode {
+      background-color: #121212;
+      color: #f2f2f2;
+    }
+    .night-mode input,
+    .night-mode button,
+    .night-mode .image-card {
+      background-color: #282828;
+      color: #f2f2f2;
+      border: 1px solid #444;
+    }
+
+    /* Header styles */
+    header {
+      background-color: #1a1a1a;
+      color: #f2f2f2;
+      padding: 10px;
+      display: flex;
+      align-items: center;
+    }
+    .logo {
+      width: 150px;
+      margin-right: 20px;
+      filter: invert(1);
+    }
+    #searchBar {
+      flex: 1; /* Take up available space */
+      padding: 10px;
+      font-size: 18px;
+      border: none;
+      color: #f2f2f2;
+      background-color: #282828;
+      border-radius: 5px;
+      margin-right: 10px;
+    }
+    .search-button {
+      background-color: #f2f2f2;
+      color: #444;
+      border: none;
+      padding: 10px 20px;
+      cursor: pointer;
+      font-size: 18px;
+      border-radius: 5px;
+      transition: background-color 0.3s ease;
+    }
+    .search-button:hover {
+      background-color: #444;
+      color: #f2f2f2;
+    }
+
+    /* Main styles */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+    #searchBar {
+      width: 100%;
+      padding: 10px;
+      font-size: 18px;
+      border: none;
+      color: #f2f2f2;
+      background-color: #282828;
+    }
+    .search-button {
+      background-color: #f2f2f2;
+      color: #444;
+      border: none;
+      padding: 10px 20px;
+      cursor: pointer;
+      font-size: 18px;
+      transition: background-color 0.3s ease;
+    }
+    .search-button:hover {
+      background-color: #444;
+      color: #f2f2f2;
+    }
+
+    /* Image grid styles */
+    .image-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 10px;
+    }
+    .image-card {
+      border: 1px solid #444;
+      padding: 10px;
+      text-align: center;
+      transition: box-shadow 0.3s ease;
+      cursor: pointer;
+    }
+    .image-card:hover {
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+    .image-icon {
+      width: 100%; /* Make the image fill the entire grid cell horizontally */
+      height: 200px; /* Set the height to your desired value */
+      background-color: #282828;
+      border-radius: 5px;
+      object-fit: cover; /* Ensure the image retains its aspect ratio and fills the container */
+    }
+    .image-url {
+      color: #1A73E8;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+    .image-url:hover {
+      color: #4285F4;
+    }
+
+
+    /* Footer styles */
+    footer {
+      text-align: center;
+      padding: 10px;
+      background-color: #282828;
+      color: #f2f2f2;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body class="night-mode">
+    <header>
+      <div class="container">
+        <img src="assets/fiction/googlelogo_light_color_272x92dp.png" alt="Google Images" class="logo">
+        <form id="searchForm" style="display: flex; flex: 1;">
+        <input type="text" id="searchBar" placeholder="Search Google Images...">
+          <button type="submit" class="search-button">Search</button>
+        </form>
+      </div>
+    </header>
+    <main>
+      <div class="container">
+        <div class="image-grid" id="imageGrid">
+        <!-- Fake search results will be added here -->
+      </div>
+    </div>
+  </main>
+  <footer>
+    <p>Design Fiction™</p>
+  </footer>
+
+  <script>
+    const searchForm = document.getElementById('searchForm');
+    const imageGrid = document.getElementById('imageGrid');
+
+    searchForm.addEventListener('submit', (event) => {
+      event.preventDefault();
+      const searchTerm = event.target.elements[0].value;
+      // You can add your own fake URLs here or use image placeholders
+      const fakeImageURLs = [
+        'assets/fiction/arrival.png',
+        'assets/fiction/campfire.png',
+        'assets/fiction/shrek.png',
+        'assets/fiction/real1.avif',
+        'assets/fiction/settlement.png',
+        'assets/fiction/real3.webp',
+        'assets/fiction/campfire.png',
+        'assets/fiction/dinosaur.png',
+        'assets/fiction/real2.jpeg',
+        'assets/fiction/arrival4.png',
+        // Add more URLs if needed
+      ];
+
+      renderImageResults(fakeImageURLs);
+    });
+
+    function renderImageResults(imageURLs) {
+      imageGrid.innerHTML = '';
+      imageURLs.forEach((url) => {
+        const imageCard = document.createElement('div');
+        imageCard.className = 'image-card';
+
+        const imageIcon = document.createElement('div');
+        imageIcon.className = 'image-icon';
+        imageIcon.innerHTML = 'Image'; // You can use an image tag here if you have image URLs
+
+        const imageURL = document.createElement('a');
+        imageURL.href = '#'; // Add a real URL if needed
+        imageURL.className = 'image-url';
+        imageURL.textContent = 'Fake Image URL'; // You can customize the text or use the actual image URL here
+
+        imageCard.appendChild(imageIcon);
+        imageCard.appendChild(document.createElement('br'));
+        imageCard.appendChild(imageURL);
+
+        imageGrid.appendChild(imageCard);
+      });
+        }
+        function renderImageResults(imageURLs) {
+        imageGrid.innerHTML = '';
+        imageURLs.forEach((url) => {
+        const imageCard = document.createElement('div');
+        imageCard.className = 'image-card';
+
+        const imageIcon = document.createElement('img'); // Use an image tag to display the actual image
+        imageIcon.className = 'image-icon';
+        imageIcon.src = url; // Set the image source to the URL from the array
+
+        const imageURL = document.createElement('a');
+        imageURL.href = url; // Set the anchor link to the URL from the array
+        imageURL.className = 'image-url';
+        imageURL.textContent = url; // Display the URL text as the link text
+
+        imageCard.appendChild(imageIcon);
+        imageCard.appendChild(document.createElement('br'));
+        imageCard.appendChild(imageURL);
+
+        imageGrid.appendChild(imageCard);
+        });
+  }
+</script>
+</body>
+</html>
