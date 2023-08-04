@@ -124,6 +124,17 @@ requestAnimationFrame(function updateLines() {
     requestAnimationFrame(updateLines);
 });
 
+var sections = document.getElementsByClassName('section');
+for (var i = 0; i < sections.length; i++) {
+    var sectionHeight = sections[i].offsetHeight;
+    var parts = sections[i].getElementsByClassName('part');
+    for (var j = 0; j < parts.length; j++) {
+        if (parts[j].offsetHeight > sectionHeight) {
+            var scaleRatio = sectionHeight / parts[j].offsetHeight;
+            parts[j].style.transform = 'scale(' + scaleRatio + ')';
+        }
+    }
+}
 
 };
 
