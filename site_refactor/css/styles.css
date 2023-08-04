@@ -25,21 +25,18 @@ body {
     padding-left: 1vw;
     padding-right: 1vw;
     flex: 1;
-    text-align: justify;
-}
-
-.part:first-child {
     text-align: left;
 }
 
-.part:last-child {
+/* .part.large {
+    flex: 2; 
     text-align: right;
-}
+} */
 
 .large {
     flex-grow: 2;
+    text-align: right;
 }
-
 
 .double-size {
     width: 200px; /* adjust as needed */
