@@ -8,6 +8,7 @@ body {
     box-sizing: border-box; 
     position: absolute;
     z-index: 1;
+    overflow-x: hidden;
 }
 
 .section {
@@ -15,7 +16,7 @@ body {
     justify-content: space-between;
     align-items: center;
     height: 48vh;
-    border: 1px solid #EEE;
+    border: 1px solid #eeff00;
     margin-top: 1vh;
     margin-bottom: 1vh;
     position: relative;
@@ -26,18 +27,19 @@ body {
     border: 1px solid #EEE;
     padding-left: 1vw;
     padding-right: 1vw;
-    flex: 1;
     text-align: left;
+    overflow: auto;
 }
-
-/* .part.large {
-    flex: 2; 
-    text-align: right;
-} */
 
 .large {
     flex-grow: 2;
     text-align: right;
+}
+
+.small {
+    flex-grow: 1;
+    max-width: 33%;
+    text-align: left;
 }
 
 .double-size {
@@ -61,7 +63,7 @@ body {
     position: relative; /* Establish a new positioning context */
     width:fit-content;
     height: 75%; /* Each sub-section takes up one third of the height */
-    border: 1px solid #EEE;
+    border: 1px solid #eeff00;
     flex-basis: auto;
 
 }
@@ -72,7 +74,7 @@ body {
     min-height: 20%;
     max-width: 70%;
     max-height: 100%;
-    border: 1px solid #EEE;
+    border: 1px solid #eeff00;
     text-align: justify;
     padding-left: 5%;
     padding-right: 5%;

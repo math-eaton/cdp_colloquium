@@ -3,24 +3,52 @@ window.onload = function() {
     for (var i = 0; i < sections.length; i++) {
         var parts = sections[i].getElementsByClassName('part');
         if (parts.length >= 2) {
-            if (Math.random() < 0.5) {
-                parts[0].classList.add('large');
+            var textElements0 = parts[0].querySelectorAll(':scope > p, :scope > h1, :scope > h2, :scope > h3, :scope > h4, :scope > h5, :scope > h6');
+            var textElements1 = parts[1].querySelectorAll(':scope > p, :scope > h1, :scope > h2, :scope > h3, :scope > h4, :scope > h5, :scope > h6');
+            if (textElements0.length > 0 && textElements1.length > 0) {
+                // Both parts contain a <p> or <h> element as a direct child, so randomly assign the "small" class to one part and the "large" class to the other part
+                if (Math.random() < 0.5) {
+                    parts[0].classList.add('small');
+                    parts[0].classList.remove('large');
+                    parts[0].style.textAlign = 'left';
+                    parts[1].classList.add('large');
+                    parts[1].classList.remove('small');
+                    parts[1].style.textAlign = 'right';
+                } else {
+                    parts[0].classList.add('large');
+                    parts[0].classList.remove('small');
+                    parts[0].style.textAlign = 'right';
+                    parts[1].classList.add('small');
+                    parts[1].classList.remove('large');
+                    parts[1].style.textAlign = 'left';
+                }
+            } else if (textElements0.length > 0) {
+                // Only the first part contains a <p> or <h> element as a direct child, so give the "small" class to the first part and the "large" class to the second part
+                parts[0].classList.add('small');
+                parts[0].classList.remove('large');
                 parts[0].style.textAlign = 'left';
+                parts[1].classList.add('large');
+                parts[1].classList.remove('small');
                 parts[1].style.textAlign = 'right';
             } else {
-                parts[1].classList.add('large');
-                parts[1].style.textAlign = 'left';
+                // Only the second part contains a <p> or <h> element as a direct child, or neither part contains a <p> or <h> element as a direct child, so give the "small" class to the second part and the "large" class to the first part
+                parts[0].classList.add('large');
+                parts[0].classList.remove('small');
                 parts[0].style.textAlign = 'right';
-            }
-
-            // Shuffle all child elements within the section
-            var children = Array.from(sections[i].children);
-            for (var j = 0; j < children.length; j++) {
-                var randomIndex = Math.floor(Math.random() * children.length);
-                children[j].parentNode.insertBefore(children[randomIndex], children[j]);
+                parts[1].classList.add('small');
+                parts[1].classList.remove('large');
+                parts[1].style.textAlign = 'left';
             }
         }
+
+        // Shuffle all child elements within the section
+        var children = Array.from(sections[i].children);
+        for (var j = 0; j < children.length; j++) {
+            var randomIndex = Math.floor(Math.random() * children.length);
+            children[j].parentNode.insertBefore(children[randomIndex], children[j]);
+        }
     }
+    
 
     // assign floating parts to a random position within their div
     var floaters = document.getElementsByClassName('floating');
