@@ -5,7 +5,7 @@ const mapPadding = 20; // Padding around the map for better visualization
 
 function preload() {
   // Load the CSV file with PapaParse
-  data = loadTable('data/fcc_geog_lookupTable.csv', 'csv', 'header');
+  data = loadTable('data/fcc_geog_lookupTable_NYonly.csv', 'csv', 'header');
 }
 
 function setup() {

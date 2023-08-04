@@ -34,7 +34,7 @@ d3.json('data/states_lakes_50m.json').then(function (states) {
     .attr('d', path);
 
   // Load the CSV data
-  d3.csv('data/fcc_geog_lookupTable.csv').then(function (data) {
+  d3.csv('data/fcc_geog_lookupTable_NYonly.csv').then(function (data) {
     // Convert the longitude and latitude values to numbers
     data.forEach(function (d) {
       d.centroid_lng = +d.centroid_lng;
