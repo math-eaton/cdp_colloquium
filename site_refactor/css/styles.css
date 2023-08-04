@@ -111,8 +111,22 @@ body {
     font-display: swap;
 }
 
-@keyframes wobble {
-    0% { transform: translateX(0); }
-    50% { transform: translateX(5px); }
+/* @keyframes wobble {
+    0% { transform: translateX(0, 0); }
+    50% { transform: translateX(8px); }
     100% { transform: translateX(0); }
+} */
+
+@keyframes wobble {
+    0% { transform: rotateX(0deg) rotateY(0deg) scale(1); }
+    10% { transform: rotateX(2deg) rotateY(4deg) scale(1.01); }
+    20% { transform: rotateX(4deg) rotateY(8deg) scale(1.02); }
+    30% { transform: rotateX(2deg) rotateY(4deg) scale(1.01); }
+    40% { transform: rotateX(0deg) rotateY(0deg) scale(1); }
+    50% { transform: rotateX(-2deg) rotateY(-4deg) scale(0.99); }
+    60% { transform: rotateX(-4deg) rotateY(-8deg) scale(0.98); }
+    70% { transform: rotateX(-2deg) rotateY(-4deg) scale(0.99); }
+    80% { transform: rotateX(0deg) rotateY(0deg) scale(1); }
+    90% { transform: rotateX(2deg) rotateY(4deg) scale(1.01); }
+    100% { transform: rotateX(0deg) rotateY(0deg) scale(1); }
 }

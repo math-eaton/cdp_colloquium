@@ -66,7 +66,7 @@ window.onload = function() {
     var floaters = document.getElementsByClassName('floating');
     for (var i = 0; i < floaters.length; i++) {
         // Random wobbling
-        var duration = Math.random() * 2 + 1; // Random duration between 1 and 3 seconds
+        var duration = Math.random() * (15 - 10) + 10; // Random duration between 10 and 20 seconds
         var delay = Math.random() * 1; // Random delay up to 1 second
         floaters[i].style.animationDuration = duration + 's';
         floaters[i].style.animationDelay = delay + 's';
