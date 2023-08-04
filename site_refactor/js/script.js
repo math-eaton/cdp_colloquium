@@ -54,8 +54,11 @@ window.onload = function() {
     // Create the path element and set its attributes
     var path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
     path.setAttribute('d', d);
-    path.setAttribute('stroke', '#eeff00');
-    path.setAttribute('fill', 'transparent');
+    // path.setAttribute('stroke', '#eeff00');
+    // path.setAttribute('stroke-width', '2');
+    path.setAttribute('fill', '#eeff00');
+    path.setAttribute('fill-opacity', '0.3');
+
     // Add the path to the SVG
     lineCanvas.appendChild(path);
 };
