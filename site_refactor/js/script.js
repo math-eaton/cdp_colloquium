@@ -34,6 +34,30 @@ window.onload = function() {
         floaters[i].style.animationDuration = duration + 's';
         floaters[i].style.animationDelay = delay + 's';
     }
+    
+    // After positioning the floating divs, draw the lines
+    var floaters = document.getElementsByClassName('floating');
+    var lineCanvas = document.getElementById('lineCanvas');
+    var d = ''; // This will hold the data for the 'd' attribute of the path
+    for (var i = 0; i < floaters.length; i++) {
+        var rect = floaters[i].getBoundingClientRect();
+        var centerX = rect.left + rect.width / 2;
+        var centerY = rect.top + rect.height / 2;
+        if (i === 0) {
+            // Move to the first point
+            d += 'M ' + centerX + ' ' + centerY;
+        } else {
+            // Draw a cubic Bezier curve to the next point
+            d += ' C ' + centerX + ' ' + centerY + ', ' + centerX + ' ' + centerY + ', ' + centerX + ' ' + centerY;
+        }
+    }
+    // Create the path element and set its attributes
+    var path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+    path.setAttribute('d', d);
+    path.setAttribute('stroke', '#eeff00');
+    path.setAttribute('fill', 'transparent');
+    // Add the path to the SVG
+    lineCanvas.appendChild(path);
 };
 
 // make floaters draggable
