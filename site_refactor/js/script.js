@@ -22,11 +22,17 @@ window.onload = function() {
         }
     }
 
-// assign floating parts to a random position within their div
+    // assign floating parts to a random position within their div
     var floaters = document.getElementsByClassName('floating');
     for (var i = 0; i < floaters.length; i++) {
         floaters[i].style.top = Math.random() * 80 + '%'; // limit to 80%
         floaters[i].style.left = Math.random() * 80 + '%'; // limit to 80%
+
+        // Random wobbling
+        var duration = Math.random() * (8 - 3) + 3; // Random duration between 8 and 3 seconds
+        var delay = Math.random() * 1; // Random delay up to 1 second
+        floaters[i].style.animationDuration = duration + 's';
+        floaters[i].style.animationDelay = delay + 's';
     }
 };
 

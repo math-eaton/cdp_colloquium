@@ -48,6 +48,11 @@ body {
     width: 98vw;
     height: 98vh; 
     position: relative;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 2vh;
+
 
 }
 
@@ -56,17 +61,22 @@ body {
     width:fit-content;
     height: 75%; /* Each sub-section takes up one third of the height */
     border: 1px solid #EEE;
+    flex-basis: auto;
 
 }
 
 .floating {
     position: relative;
-    width: 50%;
-    height: 50%;
+    min-width: 20%;
+    min-height: 20%;
+    max-width: 70%;
+    max-height: 100%;
     border: 1px solid #EEE;
-    text-align: center;
+    text-align: justify;
     padding-left: 5%;
     padding-right: 5%;
+    display: inline-block; 
+    animation: wobble 5s infinite;
 }
 
 
@@ -80,4 +90,10 @@ body {
     font-weight: normal;
     font-style: normal;
     font-display: swap;
+}
+
+@keyframes wobble {
+    0% { transform: translateX(0); }
+    50% { transform: translateX(5px); }
+    100% { transform: translateX(0); }
 }
