@@ -5,6 +5,7 @@ body {
     margin: 0;
     padding-left: 1vw;
     padding-right: 1vw;
+    box-sizing: border-box; 
 
 }
 
@@ -44,17 +45,28 @@ body {
 }
 
 .double-height {
-    height: 98vh; /* Double the height */
+    width: 98vw;
+    height: 98vh; 
+    position: relative;
+
 }
 
 .sub-section {
     position: relative; /* Establish a new positioning context */
-    height: 33.33%; /* Each sub-section takes up one third of the height */
+    width:fit-content;
+    height: 75%; /* Each sub-section takes up one third of the height */
+    border: 1px solid #EEE;
+
 }
 
 .floating {
-    position: absolute;
-
+    position: relative;
+    width: 50%;
+    height: 50%;
+    border: 1px solid #EEE;
+    text-align: center;
+    padding-left: 5%;
+    padding-right: 5%;
 }
 
 

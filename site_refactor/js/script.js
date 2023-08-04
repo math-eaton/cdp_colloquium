@@ -22,9 +22,15 @@ window.onload = function() {
         }
     }
 
+// assign floating parts to a random position within their div
     var floaters = document.getElementsByClassName('floating');
     for (var i = 0; i < floaters.length; i++) {
-        floaters[i].style.top = Math.random() * 100 + '%';
-        floaters[i].style.left = Math.random() * 100 + '%';
+        floaters[i].style.top = Math.random() * 80 + '%'; // limit to 80%
+        floaters[i].style.left = Math.random() * 80 + '%'; // limit to 80%
     }
 };
+
+// make floaters draggable
+$( function() {
+    $( ".floating" ).draggable();
+} );
