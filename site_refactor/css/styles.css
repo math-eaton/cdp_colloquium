@@ -3,7 +3,9 @@ body {
     background-color: #0c13e5;
     color: #eeff00;
     margin: 0;
-    padding: 0;
+    padding-left: 1vw;
+    padding-right: 1vw;
+
 }
 
 .section {
@@ -11,17 +13,23 @@ body {
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    height: 50vh;
+    height: 48vh;
     border: 1px solid #EEE;
     /* box-shadow: 0 0 0 2px #000;  */
-    margin: 15px 0;
+    margin-top: 1vw;
+    margin-bottom: 1vw;
+
 }
 
 .part {
     height: 100%;
     /* border: 1px solid #EEE; */
-    /* box-shadow: 0 0 0 2px #000;  */
+    box-shadow: 0 0 0 1px #000; 
     padding: 20px;
+}
+
+.double-height {
+    height: 96vh; /* 2 times the standard height of 50vh */
 }
 
 .one-third {
@@ -48,16 +56,17 @@ body {
     flex: 1;
 }
 
-/* Flip the sizes for every other section */
-/* .section:nth-child(4n+3) .left-side {
-    flex: 2;
-    text-align: right;
+.floating {
+    position: absolute;
+    width: 100px; /* adjust as needed */
+    height: 100px; /* adjust as needed */
 }
 
-.section:nth-child(4n+5) .right-side {
-    flex: 1;
-    text-align: left;
-} */
+.double-size {
+    width: 200px; /* adjust as needed */
+    height: 200px; /* adjust as needed */
+}
+
 
 @font-face {
     font-family: 'Perfect DOS VGA 437';

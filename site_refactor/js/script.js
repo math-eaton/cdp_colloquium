@@ -14,4 +14,15 @@ window.onload = function() {
             parts[1].innerHTML = temp;
         }
     }
+
+    var floatingParts = document.getElementsByClassName('floating');
+    for (var i = 0; i < floatingParts.length; i++) {
+        var part = floatingParts[i];
+        var parent = part.parentElement;
+        var maxX = parent.offsetWidth - part.offsetWidth;
+        var maxY = parent.offsetHeight - part.offsetHeight;
+        part.style.left = Math.random() * maxX + 'px';
+        part.style.top = Math.random() * maxY + 'px';
+    }
+
 };
