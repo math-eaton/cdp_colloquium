@@ -144,13 +144,27 @@ window.addEventListener('load', function() {
 // make floaters draggable
 $( function() {
     $( ".floating" ).draggable();
+    $( ".bouncing" ).draggable();
 } );
 
 ////// bouncer animation
 
+// Array of image URLs
+var images = [
+    'assets/bouncing/18468.png',
+    'assets/bouncing/39412.png',
+    'assets/bouncing/84319.png',
+    'assets/bouncing/119687.png',
+    'assets/bouncing/159877.png',
+    'assets/bouncing/167237.png',
+    'assets/bouncing/173078.png',
+    'assets/bouncing/182174.png',
+  ];
+
 document.addEventListener('DOMContentLoaded', function() {
     var sections = document.querySelectorAll('.section');
     var floatContainer = document.querySelector('.float-container');
+    var bouncingContainers = document.getElementsByClassName('bouncing-container'); // Get elements by class name
 
     // Calculate the height based on the position of the float-container
     var height = 0;
@@ -159,48 +173,64 @@ document.addEventListener('DOMContentLoaded', function() {
         height += sections[i].offsetHeight + 2; // 2 is for the top and bottom margin
     }
 
-    // Number of bouncing divs
-    var numDivs = 10;
+    // Loop through all bouncing containers
+    for (var i = 0; i < bouncingContainers.length; i++) {
+        var bouncingContainer = bouncingContainers[i];
+        bouncingContainer.style.height = height + 'px';
 
-    // Container for the bouncing divs
-    var container = document.getElementById('bouncing-container');
+        // Number of bouncing divs
+        var numDivs = 5;
 
-    // Create and animate the bouncing divs
-    for (var i = 0; i < numDivs; i++) {
-        var div = document.createElement('div');
-        div.className = 'bouncing';
-        container.appendChild(div);
+        // Create and animate the bouncing divs
+        for (var j = 0; j < numDivs; j++) {
+            var div = document.createElement('div');
+            div.className = 'bouncing';
+          
+            // Choose a random image from the array
+            var randomImage = images[Math.floor(Math.random() * images.length)];
+          
+            // Set the background image
+            div.style.backgroundImage = 'url(' + randomImage + ')';
+            div.style.backgroundSize = 'cover'; // Cover the entire div
+          
+            bouncingContainer.appendChild(div);
+          
+            // Initial position and velocity
+            var x = Math.random() * window.innerWidth;
+            var y = Math.random() * height; // Use the calculated height
+            var vx = (Math.random() - 0.5) * .85;
+            var vy = (Math.random() - 0.5) * .85;
 
-        // Initial position and velocity
-        var x = Math.random() * window.innerWidth;
-        var y = Math.random() * height; // Use the calculated height
-        var vx = (Math.random() - 0.5) * 2;
-        var vy = (Math.random() - 0.5) * 2;
-
-        // Animate the div
-        animateDiv(div, x, y, vx, vy, height); // Pass the calculated height
+            // Animate the div
+            animateDiv(div, x, y, vx, vy, height); // Pass the calculated height
     }
+}
 });
 
-function animateDiv(div, x, y, vx, vy, height) {
+function animateDiv(div, x, y, vx, vy, containerHeight) {
     // Update position
     x += vx;
     y += vy;
-
-    // Check for collisions with the edges of the viewport
-    if (x < 0 || x > window.innerWidth - 50) {
-        vx = -vx;
+  
+    // Get the width and height of the div
+    var divWidth = div.offsetWidth;
+    var divHeight = div.offsetHeight;
+  
+    // Check for collisions with the edges of the container
+    if (x < 0 || x > window.innerWidth - divWidth) {
+      vx = -vx;
     }
-    if (y < 0 || y > height - 50) { // Use the calculated height
-        vy = -vy;
+    if (y < 0 || y > containerHeight - divHeight) {
+      vy = -vy;
     }
-
+  
     // Apply the new position
     div.style.left = x + 'px';
     div.style.top = y + 'px';
-
+  
     // Call this function again on the next frame
     requestAnimationFrame(function () {
-        animateDiv(div, x, y, vx, vy, height);
+      animateDiv(div, x, y, vx, vy, containerHeight);
     });
-}
+  }
+  
