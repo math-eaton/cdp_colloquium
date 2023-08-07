@@ -145,3 +145,48 @@ window.addEventListener('load', function() {
 $( function() {
     $( ".floating" ).draggable();
 } );
+
+// Number of bouncing divs
+var numDivs = 5;
+
+// Container for the bouncing divs
+var container = document.getElementById('bouncing-container');
+
+// Create and animate the bouncing divs
+for (var i = 0; i < numDivs; i++) {
+  var div = document.createElement('div');
+  div.className = 'bouncing';
+  container.appendChild(div);
+
+  // Initial position and velocity
+  var x = Math.random() * window.innerWidth;
+  var y = Math.random() * window.innerHeight;
+  var vx = (Math.random() - 0.5) * 2;
+  var vy = (Math.random() - 0.5) * 2;
+
+  // Animate the div
+  animateDiv(div, x, y, vx, vy);
+}
+
+function animateDiv(div, x, y, vx, vy) {
+  // Update position
+  x += vx;
+  y += vy;
+
+  // Check for collisions with the edges of the viewport
+  if (x < 0 || x > window.innerWidth - 50) {
+    vx = -vx;
+  }
+  if (y < 0 || y > window.innerHeight - 50) {
+    vy = -vy;
+  }
+
+  // Apply the new position
+  div.style.left = x + 'px';
+  div.style.top = y + 'px';
+
+  // Call this function again on the next frame
+  requestAnimationFrame(function () {
+    animateDiv(div, x, y, vx, vy);
+  });
+}
