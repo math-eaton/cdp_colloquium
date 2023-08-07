@@ -54,6 +54,24 @@ body {
     height: 200px; /* adjust as needed */
 }
 
+.ticker-container {
+    position: absolute; 
+    top: 0; 
+    left: 0;
+    width: 100%;
+    height: 50px; 
+    overflow: hidden;
+    color: #eeff00;
+  }
+
+.ticker-text {
+position: absolute;
+top: 0;
+left: 100%; /* start off the right edge */
+white-space: nowrap; /* keep text on one line */
+}
+
+
 .float-container height {
     /* width: 98vw;
     height: 98vh;  */
@@ -63,8 +81,6 @@ body {
     justify-content: space-between;
     gap: 2vh;
     background-color: #0c13e5; /* Same background color as the body */
-
-
 }
 
 .sub-section {
@@ -156,3 +172,17 @@ body {
     90% { transform: rotateX(2deg) rotateY(4deg) scale(1.01); }
     100% { transform: rotateX(0deg) rotateY(0deg) scale(1); }
 }
+
+@keyframes ticker {
+    from {
+      left: 100%; /* start off the right edge */
+    }
+    to {
+      left: -100%; /* end off the left edge */
+    }
+  }
+  
+  .ticker-text {
+    animation: ticker 10s linear infinite; /* adjust duration as needed */
+  }
+  
