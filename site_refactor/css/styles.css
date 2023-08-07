@@ -1,15 +1,42 @@
-body {
+@keyframes gradient-animation {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+  
+  
+  body::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: -1;
+    background: linear-gradient(45deg, #0c13e5, #143bd4, #0c13e5, #0827F5);
+    background-size: 400% 400%;
+    animation: gradient-animation 20s ease infinite;
+    }
+  
+  body {
     font-family: 'Perfect DOS VGA 437', monospace;
-    background-color: #0c13e5;
     color: #eeff00;
     margin: 0;
     padding-left: 1vw;
     padding-right: 1vw;
-    box-sizing: border-box; 
+    box-sizing: border-box;
     position: absolute;
     z-index: 1;
     overflow-x: hidden;
-}
+    cursor: url('assets/cursors/arrow.cur'), auto;
+  }
+
 
 .section {
     display: flex;
@@ -80,7 +107,7 @@ white-space: nowrap; /* keep text on one line */
     flex-direction: row;
     justify-content: space-between;
     gap: 2vh;
-    background-color: #0c13e5; /* Same background color as the body */
+    /* background-color: #0c13e5; */
 }
 
 .sub-section {
@@ -105,6 +132,7 @@ white-space: nowrap; /* keep text on one line */
     display: inline-block; 
     z-index: 2;
     animation: wobble 5s infinite;
+    cursor: url('assets/cursors/cursor_15.cur'), auto;
 }
 
 .bouncing-container {
@@ -126,6 +154,7 @@ white-space: nowrap; /* keep text on one line */
     width: 20vw;
     height: 20vw;
     opacity: .7;
+    cursor: url('assets/cursors/cursor_15.cur'), auto;
 }
   
 #header {
@@ -185,4 +214,5 @@ white-space: nowrap; /* keep text on one line */
   .ticker-text {
     animation: ticker 10s linear infinite; /* adjust duration as needed */
   }
+  
   
