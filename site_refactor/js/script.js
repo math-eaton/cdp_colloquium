@@ -146,47 +146,61 @@ $( function() {
     $( ".floating" ).draggable();
 } );
 
-// Number of bouncing divs
-var numDivs = 5;
+////// bouncer animation
 
-// Container for the bouncing divs
-var container = document.getElementById('bouncing-container');
+document.addEventListener('DOMContentLoaded', function() {
+    var sections = document.querySelectorAll('.section');
+    var floatContainer = document.querySelector('.float-container');
 
-// Create and animate the bouncing divs
-for (var i = 0; i < numDivs; i++) {
-  var div = document.createElement('div');
-  div.className = 'bouncing';
-  container.appendChild(div);
+    // Calculate the height based on the position of the float-container
+    var height = 0;
+    for (var i = 0; i < sections.length; i++) {
+        if (sections[i] === floatContainer) break;
+        height += sections[i].offsetHeight + 2; // 2 is for the top and bottom margin
+    }
 
-  // Initial position and velocity
-  var x = Math.random() * window.innerWidth;
-  var y = Math.random() * window.innerHeight;
-  var vx = (Math.random() - 0.5) * 2;
-  var vy = (Math.random() - 0.5) * 2;
+    // Number of bouncing divs
+    var numDivs = 10;
 
-  // Animate the div
-  animateDiv(div, x, y, vx, vy);
-}
+    // Container for the bouncing divs
+    var container = document.getElementById('bouncing-container');
 
-function animateDiv(div, x, y, vx, vy) {
-  // Update position
-  x += vx;
-  y += vy;
+    // Create and animate the bouncing divs
+    for (var i = 0; i < numDivs; i++) {
+        var div = document.createElement('div');
+        div.className = 'bouncing';
+        container.appendChild(div);
 
-  // Check for collisions with the edges of the viewport
-  if (x < 0 || x > window.innerWidth - 50) {
-    vx = -vx;
-  }
-  if (y < 0 || y > window.innerHeight - 50) {
-    vy = -vy;
-  }
+        // Initial position and velocity
+        var x = Math.random() * window.innerWidth;
+        var y = Math.random() * height; // Use the calculated height
+        var vx = (Math.random() - 0.5) * 2;
+        var vy = (Math.random() - 0.5) * 2;
 
-  // Apply the new position
-  div.style.left = x + 'px';
-  div.style.top = y + 'px';
+        // Animate the div
+        animateDiv(div, x, y, vx, vy, height); // Pass the calculated height
+    }
+});
 
-  // Call this function again on the next frame
-  requestAnimationFrame(function () {
-    animateDiv(div, x, y, vx, vy);
-  });
+function animateDiv(div, x, y, vx, vy, height) {
+    // Update position
+    x += vx;
+    y += vy;
+
+    // Check for collisions with the edges of the viewport
+    if (x < 0 || x > window.innerWidth - 50) {
+        vx = -vx;
+    }
+    if (y < 0 || y > height - 50) { // Use the calculated height
+        vy = -vy;
+    }
+
+    // Apply the new position
+    div.style.left = x + 'px';
+    div.style.top = y + 'px';
+
+    // Call this function again on the next frame
+    requestAnimationFrame(function () {
+        animateDiv(div, x, y, vx, vy, height);
+    });
 }

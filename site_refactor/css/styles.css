@@ -62,14 +62,15 @@ body {
     flex-direction: row;
     justify-content: space-between;
     gap: 2vh;
+    background-color: #0c13e5; /* Same background color as the body */
 
 
 }
 
 .sub-section {
-    position: relative; /* Establish a new positioning context */
+    position: relative; 
     width:fit-content;
-    height: 75%; /* Each sub-section takes up one third of the height */
+    height: 75%; 
     border: 1px solid #eeff00;
     flex-basis: auto;
 
@@ -91,27 +92,22 @@ body {
 }
 
 #bouncing-container {
-    position: fixed;
-    padding-left: 1vw;
-    padding-right: 1vw;
+    position: absolute;
     top: 0;
     left: 0;
-    right: 0;
-    bottom: 0;
-    overflow: hidden;
     width: 100%;
     height: 100%;
+    overflow: hidden;
     z-index: -1;
-  }
-    
-  .bouncing {
+}
+
+.bouncing {
+    position: absolute;
     width: 50px;
     height: 50px;
     background-color: red;
-    position: absolute;
-  }
+}
   
-
 #header {
     height:25vh;
 }
