@@ -19,7 +19,7 @@
     right: 0;
     bottom: 0;
     z-index: -1;
-    background: linear-gradient(45deg, #0c13e5, #143bd4, #0c13e5, #0827F5);
+    background: linear-gradient(45deg, #0c13e5, #193abe, #0c13e5, #0827F5);
     background-size: 400% 400%;
     animation: gradient-animation 20s ease infinite;
     }
@@ -94,10 +94,9 @@
 .ticker-text {
 position: absolute;
 top: 0;
-left: 100%; /* start off the right edge */
-white-space: nowrap; /* keep text on one line */
+left: 100%; 
+white-space: nowrap; 
 }
-
 
 .float-container height {
     /* width: 98vw;
