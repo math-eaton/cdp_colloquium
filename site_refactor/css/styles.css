@@ -111,8 +111,9 @@ white-space: nowrap;
 
 .sub-section {
     position: relative; 
-    width:fit-content;
-    height: 75%; 
+    /* width:fit-content; */
+    max-height: 25%; 
+    max-height: 25%; 
     border: 1px solid #eeff00;
     flex-basis: auto;
 
@@ -132,7 +133,14 @@ white-space: nowrap;
     z-index: 2;
     animation: wobble 5s infinite;
     cursor: url('assets/cursors/cursor_15.cur'), auto;
+    visibility: hidden;
 }
+
+.floating img {
+  max-width: 150%; /* adjust as needed */
+  height: auto; /* maintain aspect ratio */
+}
+
 
 .bouncing-container {
     position: absolute;

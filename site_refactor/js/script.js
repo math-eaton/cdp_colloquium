@@ -234,3 +234,33 @@ function animateDiv(div, x, y, vx, vy, containerHeight) {
     });
   }
   
+  // URLs of the GIFs
+const gifUrls = [
+    'assets/gif/combined_inverted.gif',
+    'assets/gif/area_inverted.gif',
+    'assets/gif/point_inverted.gif',
+    'assets/gif/polyline_inverted.gif',
+  ];
+  
+  // Preload the GIFs and attach load event listeners
+  let loadedCount = 0;
+  gifUrls.forEach((url) => {
+    const img = new Image();
+    img.src = url;
+    img.onload = () => {
+      loadedCount++;
+      if (loadedCount === gifUrls.length) {
+        // All GIFs have loaded, so display them
+        displayGifs();
+      }
+    };
+  });
+  
+  // Function to display the GIFs
+  function displayGifs() {
+    const gifs = document.querySelectorAll('.floating img');
+    gifs.forEach(gif => {
+      gif.style.visibility = 'visible'; // or gif.style.display = 'block';
+    });
+  }
+  
