@@ -77,8 +77,8 @@
 }
 
 .double-size {
-    width: 200px; /* adjust as needed */
-    height: 200px; /* adjust as needed */
+    width: 200%;
+    height: 200%;
 }
 
 .ticker-container {
@@ -98,33 +98,38 @@ left: 100%;
 white-space: nowrap; 
 }
 
-.float-container height {
-    /* width: 98vw;
-    height: 98vh;  */
-    position: relative;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    gap: 2vh;
-    /* background-color: #0c13e5; */
+
+.float-container {
+  position: relative;
+  width: 98vw;
+  height: 98vh;
+  display: flex;
+}
+
+.sub-section.large {
+  flex-basis: 50%;
+  height: 100%;
+}
+
+.right-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* Create two columns */
+  grid-template-rows: 1fr 1fr; /* Create two rows */
+  flex-basis: 50%;
+  height: 100%;
 }
 
 .sub-section {
-    position: relative; 
-    /* width:fit-content; */
-    max-height: 25%; 
-    max-height: 25%; 
-    border: 1px solid #eeff00;
-    flex-basis: auto;
-
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
+
 
 .floating {
     position: relative;
-    min-width: 20%;
-    min-height: 20%;
-    max-width: 70%;
-    max-height: 100%;
+    max-width: 85%;
+    max-height: 85%;
     border: 1px solid #eeff00;
     text-align: justify;
     padding-left: 5%;
@@ -134,12 +139,13 @@ white-space: nowrap;
     animation: wobble 5s infinite;
     cursor: url('assets/cursors/cursor_15.cur'), auto;
     visibility: hidden;
-}
-
-.floating img {
-  max-width: 150%; /* adjust as needed */
-  height: auto; /* maintain aspect ratio */
-}
+  }
+  
+  .floating img {
+    max-width: 85%; /* adjust as needed */
+    height: auto; /* maintain aspect ratio */
+  }
+  
 
 
 .bouncing-container {
@@ -163,6 +169,11 @@ white-space: nowrap;
     opacity: .7;
     cursor: url('assets/cursors/cursor_15.cur'), auto;
 }
+
+.monochrome {
+  filter: grayscale(100%) brightness(100%);
+}
+
   
 #header {
     height:25vh;
@@ -176,6 +187,10 @@ white-space: nowrap;
     height: 100%;
 }
 
+/* #combined-gif {
+  width: 75%;
+  height: 75%;
+} */
 
 @font-face {
     font-family: 'Perfect DOS VGA 437';
