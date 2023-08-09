@@ -245,3 +245,73 @@ minimizeButton.addEventListener('click', () => {
   windowBody.classList.toggle('hidden');
   console.log("MINN")
 });
+
+// Add the 'hide-scrollbar' class to the body on page load
+document.body.classList.add('hide-scrollbar');
+
+// splash window config
+var splashInProgress = false; // Flag to track if the splash behavior is already in progress
+var currentMessage = ''; // Variable to store the current message
+
+document.getElementById('command-prompt').addEventListener('keydown', function(event) {
+  // Check if the pressed key is the "Escape" key
+  if (event.key === 'Escape') {
+    closeSplash();
+    return; // Exit the function if the "Escape" key was pressed
+  }
+
+  // If the splash behavior is in progress, append the current message on every keypress
+  if (splashInProgress) {
+    this.value += '\n' + currentMessage;
+    return;
+  }
+
+  splashInProgress = true; // Set the flag to true to prevent further triggering
+
+  // Append the countdown message to the text area
+  this.value += '\nC:\\> Closing in 3 seconds...';
+  
+  // Make the text area read-only to prevent further typing
+  this.readOnly = true;
+
+  // Define the unique messages
+  var messages = [
+    'Message 1: Your system is ready!',
+    'Message 2: Loading modules...',
+    'Message 3: Connecting to the network...',
+    'Message 4: Finalizing setup...',
+    'Message 5: Welcome to your application!'
+  ];
+
+  // Define the time intervals for displaying the messages (in milliseconds)
+  var messageIntervals = [2000, 1500, 1000, 500, 250];
+
+  // Start a separate timer for the countdown display
+  var displayCountdown = 3 * 10; // 3 seconds, with 10 updates per second
+  var messageIndex = 0;
+  var displayTimer = setInterval(function() {
+    displayCountdown--;
+    var wholeNumberCountdown = Math.ceil(displayCountdown / 10); // Round up to the nearest whole number
+    currentMessage = 'C:\\> Closing in ' + wholeNumberCountdown + ' seconds...'; // Assign the current message
+    document.getElementById('command-prompt').value = document.getElementById('command-prompt').value.replace(/\d+ seconds...$/, wholeNumberCountdown + ' seconds...');
+    
+    // Check if it's time to display the next message
+    if (displayCountdown * 100 <= messageIntervals[messageIndex]) {
+      currentMessage = messages[messageIndex]; // Update the current message
+      document.getElementById('command-prompt').value += '\n' + currentMessage;
+      messageIndex++;
+    }
+
+    if (displayCountdown <= 0) {
+      clearInterval(displayTimer);
+      closeSplash();
+    }
+  }, 100); // Update 10 times per second
+});
+
+function closeSplash() {
+  document.getElementById('splash-window').style.display = 'none';
+
+  // Remove the 'hide-scrollbar' class from the body to restore the scrollbar
+  document.body.classList.remove('hide-scrollbar');
+}
