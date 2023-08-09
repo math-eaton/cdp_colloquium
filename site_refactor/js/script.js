@@ -68,12 +68,21 @@ function updateLines(svg, floater) {
 }
 
 
-
-// jquery make classes draggable and windows resizable
+// jquery dragging / resizing functions
 $(document).ready(function() {
-  $(".bouncing").draggable();
-  $(".window").draggable();
+  let maxZIndex = 1;
 
+  $(".window").draggable({
+    start: function(event, ui) {
+      maxZIndex++;
+      $(this).css('z-index', maxZIndex);
+    },
+    stop: function(event, ui) {
+      // Keep the dragged window at the front after dragging is done
+      $(this).css('z-index', maxZIndex);
+    }
+  });
+  
   // Make window elements resizable
   $(".window").resizable({
       handles: "n, e, s, w, ne, se, sw, nw",
@@ -102,17 +111,16 @@ var images = [
     'assets/bouncing/182174.png',
   ];
 
-document.addEventListener('DOMContentLoaded', function() {
+  document.addEventListener('DOMContentLoaded', function() {
     var sections = document.querySelectorAll('.section');
-    var floatContainer = document.querySelector('.float-container');
+    var floatingContainer = document.querySelector('.floating-container');
     var bouncingContainers = document.getElementsByClassName('bouncing-container'); // Get elements by class name
     var windows = document.querySelectorAll('.window'); // Get all window elements
-
 
     // Calculate the height based on the position of the float-container
     var height = 0;
     for (var i = 0; i < sections.length; i++) {
-        if (sections[i] === floatContainer) break;
+        if (sections[i] === floatingContainer) break;
         height += sections[i].offsetHeight + 2; // 2 is for the top and bottom margin
     }
 
@@ -127,16 +135,16 @@ document.addEventListener('DOMContentLoaded', function() {
         for (var j = 0; j < numDivs; j++) {
             var div = document.createElement('div');
             div.className = 'bouncing';
-          
+
             // Choose a random image from the array
             var randomImage = images[Math.floor(Math.random() * images.length)];
-          
+
             // Set the background image
             div.style.backgroundImage = 'url(' + randomImage + ')';
             div.style.backgroundSize = 'cover'; // Cover the entire div
-          
+
             bouncingContainer.appendChild(div);
-          
+
             // Initial position and velocity
             var x = Math.random() * document.documentElement.scrollWidth;
             var y = Math.random() * document.documentElement.scrollHeight;
@@ -145,40 +153,70 @@ document.addEventListener('DOMContentLoaded', function() {
 
             // Animate the div
             animateDiv(div, x, y, vx, vy, height); // Pass the calculated height
+        }
     }
-}
 
-      // Adjust window widths randomly
-      windows.forEach(function(windowElement) {
+    // Adjust window widths randomly
+    windows.forEach(function(windowElement) {
         var currentWidth = windowElement.offsetWidth;
         var randomPercentage = Math.random() * 0.2 + 0.9; // Random value between 0.9 and 1.1
         var newWidth = currentWidth * randomPercentage;
 
         windowElement.style.width = newWidth + 'px';
-      });
+    });
 
-      // Code for attaching event listeners to window buttons
-      windows.forEach(windowElement => {
-        const windowBody = windowElement.querySelector('.window-body');
-        const maximizeButton = windowElement.querySelector('[aria-label="Maximize"]');
-        const closeButton = windowElement.querySelector('[aria-label="Close"]');
-        const minimizeButton = windowElement.querySelector('[aria-label="Minimize"]');
-        
-        maximizeButton.addEventListener('click', () => {
-          windowElement.style.width = '100vw';
-          windowElement.style.height = '100vh';
-        });
-        
+    // Code for attaching event listeners to window buttons
+    windows.forEach(windowElement => {
+      const windowBody = windowElement.querySelector('.window-body');
+      const maximizeButton = windowElement.querySelector('.maximize-button');
+      const restoreButton = windowElement.querySelector('.restore-button');
+      const closeButton = windowElement.querySelector('[aria-label="Close"]');
+      const minimizeButton = windowElement.querySelector('[aria-label="Minimize"]');
+
+      // Hide the Restore button on page load
+      restoreButton.style.display = 'none';
+
+      maximizeButton.addEventListener('click', () => {
+        if (windowElement.style.position !== 'fixed') {
+            // Save the original position, dimensions, and z-index
+            windowElement.dataset.originalPosition = windowElement.style.position;
+            windowElement.dataset.originalWidth = windowElement.style.width;
+            windowElement.dataset.originalHeight = windowElement.style.height;
+            windowElement.dataset.originalZIndex = windowElement.style.zIndex;
+            
+            // Set the element to fixed position
+            windowElement.style.position = 'fixed';
+            windowElement.style.width = '100vw';
+            windowElement.style.height = '100vh';
+            windowElement.style.top = '0';
+            windowElement.style.left = '0';
+            windowElement.style.zIndex = '9999'; // Set a high z-index
+            maximizeButton.style.display = 'none'; // Hide the Maximize button
+            restoreButton.style.display = 'block'; // Show the Restore button
+        }
+    });
+
+    restoreButton.addEventListener('click', () => {
+        if (windowElement.style.position === 'fixed') {
+            // Restore the original position, dimensions, and z-index
+            windowElement.style.position = windowElement.dataset.originalPosition;
+            windowElement.style.width = windowElement.dataset.originalWidth;
+            windowElement.style.height = windowElement.dataset.originalHeight;
+            windowElement.style.zIndex = windowElement.dataset.originalZIndex;
+            maximizeButton.style.display = 'block'; // Show the Maximize button
+            restoreButton.style.display = 'none'; // Hide the Restore button
+        }
+    });
+
         closeButton.addEventListener('click', () => {
-          windowElement.remove();
+            windowElement.remove();
         });
-        
-        minimizeButton.addEventListener('click', () => {
-          windowBody.classList.toggle('hidden');
-        });
-      });
-});
 
+        minimizeButton.addEventListener('click', () => {
+            windowBody.classList.toggle('hidden');
+        });
+    });
+});
 
 
 
