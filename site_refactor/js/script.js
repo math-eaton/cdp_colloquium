@@ -141,10 +141,12 @@ window.addEventListener('load', function() {
 };
 
 
-// make floaters draggable
+// make classes draggable
 $( function() {
     $( ".floating" ).draggable();
     $( ".bouncing" ).draggable();
+    $( ".window" ).draggable();
+
 } );
 
 ////// bouncer animation
@@ -264,3 +266,30 @@ const gifUrls = [
     });
   }
   
+
+///////////////////////
+// css98 custom behavior
+
+const windowElement = document.querySelector('.window');
+const windowBody = windowElement.querySelector('.window-body');
+
+const maximizeButton = document.querySelector('[aria-label="Maximize"]');
+const closeButton = document.querySelector('[aria-label="Close"]');
+const minimizeButton = document.querySelector('[aria-label="Minimize"]');
+
+// Maximize Button
+maximizeButton.addEventListener('click', () => {
+  windowElement.style.width = '100vw';
+  windowElement.style.height = '100vh';
+});
+
+// Close Button
+closeButton.addEventListener('click', () => {
+  windowElement.remove();
+});
+
+// Minimize Button
+minimizeButton.addEventListener('click', () => {
+  windowBody.classList.toggle('hidden');
+  console.log("MINN")
+});
