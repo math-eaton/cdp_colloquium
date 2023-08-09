@@ -315,3 +315,36 @@ function closeSplash() {
   // Remove the 'hide-scrollbar' class from the body to restore the scrollbar
   document.body.classList.remove('hide-scrollbar');
 }
+
+
+////////////////
+// desktop image carousel
+// Array of image URLs for background images
+const backgroundImages = [
+    'assets/wallpapers/wind.jpg',
+    'assets/wallpapers/turquoise.png',
+    'assets/wallpapers/clouds.jpg',
+    'assets/wallpapers/machine.png',
+    'assets/wallpapers/diet-bliss.jpg',
+  ];
+  
+  // Function to select a random image URL from the array
+  function getRandomBackgroundImage() {
+    const randomIndex = Math.floor(Math.random() * backgroundImages.length);
+    return backgroundImages[randomIndex];
+  }
+  
+  // Function to set the background image
+  function setBackgroundImage(imageUrl) {
+    document.body.style.backgroundImage = `url('${imageUrl}')`;
+  }
+  
+  // Function to be called on page load
+  function onPageLoad() {
+    const randomImageUrl = getRandomBackgroundImage();
+    setBackgroundImage(randomImageUrl);
+  }
+  
+  // Call the onPageLoad function when the page has finished loading
+  window.addEventListener('load', onPageLoad);
+  
