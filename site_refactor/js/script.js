@@ -69,12 +69,24 @@ function updateLines(svg, floater) {
 
 
 
-// make classes draggable
-$( function() {
-    $( ".bouncing" ).draggable();
-    $( ".window" ).draggable();
+// jquery make classes draggable and windows resizable
+$(document).ready(function() {
+  $(".bouncing").draggable();
+  $(".window").draggable();
 
-} );
+  // Make window elements resizable
+  $(".window").resizable({
+      handles: "n, e, s, w, ne, se, sw, nw",
+      minWidth: 100, // Set minimum width
+      minHeight: 100, // Set minimum height
+      maxWidth: window.innerWidth, // Set maximum width
+      maxHeight: window.innerHeight, // Set maximum height
+      resize: function(event, ui) {
+          // Update lines for SVG (if needed)
+          updateLines(svg, windows);
+      }
+  });
+});
 
 ////// bouncer animation
 
@@ -126,8 +138,8 @@ document.addEventListener('DOMContentLoaded', function() {
             bouncingContainer.appendChild(div);
           
             // Initial position and velocity
-            var x = Math.random() * screen.width;
-            var y = Math.random() * screen.height;
+            var x = Math.random() * document.documentElement.scrollWidth;
+            var y = Math.random() * document.documentElement.scrollHeight;
             var vx = (Math.random() - 0.5) * 0.85;
             var vy = (Math.random() - 0.5) * 0.85;
 
@@ -357,3 +369,12 @@ const backgroundImages = [
   
 
 //////////
+function updateBouncingContainerSize() {
+  const bouncingContainer = document.querySelector('.bouncing-container');
+  bouncingContainer.style.width = window.innerWidth + 'px';
+  bouncingContainer.style.height = fullBodyHeight + 'px'; // Set height to full body height
+}
+
+// Call the function initially and whenever the window is resized
+updateBouncingContainerSize();
+window.addEventListener('resize', updateBouncingContainerSize);
