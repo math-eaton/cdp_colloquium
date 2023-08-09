@@ -1,53 +1,11 @@
 window.onload = function() {
-    var sections = document.getElementsByClassName('section');
-    for (var i = 0; i < sections.length; i++) {
-        var parts = sections[i].getElementsByClassName('part');
-        if (parts.length >= 2) {
-            var textElements0 = parts[0].querySelectorAll(':scope > p, :scope > h1, :scope > h2, :scope > h3, :scope > h4, :scope > h5, :scope > h6');
-            var textElements1 = parts[1].querySelectorAll(':scope > p, :scope > h1, :scope > h2, :scope > h3, :scope > h4, :scope > h5, :scope > h6');
-            if (textElements0.length > 0 && textElements1.length > 0) {
-                // Both parts contain a <p> or <h> element as a direct child, so randomly assign the "small" class to one part and the "large" class to the other part
-                if (Math.random() < 0.5) {
-                    parts[0].classList.add('small');
-                    parts[0].classList.remove('large');
-                    parts[0].style.textAlign = 'left';
-                    parts[1].classList.add('large');
-                    parts[1].classList.remove('small');
-                    parts[1].style.textAlign = 'right';
-                } else {
-                    parts[0].classList.add('large');
-                    parts[0].classList.remove('small');
-                    parts[0].style.textAlign = 'right';
-                    parts[1].classList.add('small');
-                    parts[1].classList.remove('large');
-                    parts[1].style.textAlign = 'left';
-                }
-            } else if (textElements0.length > 0) {
-                // Only the first part contains a <p> or <h> element as a direct child, so give the "small" class to the first part and the "large" class to the second part
-                parts[0].classList.add('small');
-                parts[0].classList.remove('large');
-                parts[0].style.textAlign = 'left';
-                parts[1].classList.add('large');
-                parts[1].classList.remove('small');
-                parts[1].style.textAlign = 'right';
-            } else {
-                // Only the second part contains a <p> or <h> element as a direct child, or neither part contains a <p> or <h> element as a direct child, so give the "small" class to the second part and the "large" class to the first part
-                parts[0].classList.add('large');
-                parts[0].classList.remove('small');
-                parts[0].style.textAlign = 'right';
-                parts[1].classList.add('small');
-                parts[1].classList.remove('large');
-                parts[1].style.textAlign = 'left';
-            }
-        }
-
-        // Shuffle all child elements within the section
-        var children = Array.from(sections[i].children);
-        for (var j = 0; j < children.length; j++) {
-            var randomIndex = Math.floor(Math.random() * children.length);
-            children[j].parentNode.insertBefore(children[randomIndex], children[j]);
-        }
+    var windows = document.getElementsByClassName('window');
+    for (var i = 0; i < windows.length; i++) {
+      var offset = Math.random() * 10;
+      windows[i].style.transform = 'translate(' + offset + '%, ' + offset + '%)';
     }
+  };
+  
     
 
     // assign floating parts to a random position within their div
@@ -57,13 +15,9 @@ window.onload = function() {
     //     floaters[i].style.left = Math.random() * 10 + '%'; // limit to 10%
     // }
 
-    // make floaters draggable
-    $( function() {
-        $( ".floating" ).draggable();
-    } );
 
     // randomly delay the start of floater wobbling animation
-    var floaters = document.getElementsByClassName('floating');
+    var floaters = document.getElementsByClassName('window');
     for (var i = 0; i < floaters.length; i++) {
         // Random wobbling
         var duration = Math.random() * (15 - 10) + 10; // Random duration between 10 and 20 seconds
@@ -138,12 +92,10 @@ window.addEventListener('load', function() {
     }
 });
 
-};
 
 
 // make classes draggable
 $( function() {
-    $( ".floating" ).draggable();
     $( ".bouncing" ).draggable();
     $( ".window" ).draggable();
 

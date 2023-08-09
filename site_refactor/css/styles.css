@@ -1,22 +1,27 @@
 
-.body {
+body {
     font-family: 'Perfect DOS VGA 437', monospace;
-    color: #eeff00;
     margin: 0;
     padding-left: 5vw;
     padding-right: 5vw;
     height: 100%;
-    box-sizing: border-box;
-    position: absolute;
-    z-index: 1;
-    overflow-x: hidden;
     cursor: url('assets/cursors/arrow.cur'), auto;
-    /* background: #3a6ea5; */
-    background: url('assets/index/Wind.jpg') no-repeat fixed !important;
-    /* background-size: cover;   
-    background-position: center; */
-
+    background: #3a6ea5;
+    background-image: url('../assets/index/Wind.jpg'); /* Replace with the actual path to your image */
+    background-size: cover; /* This will scale the image to cover the entire element */
+    background-position: center; /* This will center the image */
+    background-repeat: no-repeat; /* This will prevent the image from repeating */
+    background-attachment: fixed; /* This will make the background fixed when scrolling */
+  
   }
+
+.window {
+
+  animation: wobble 5s infinite;
+
+}
+
+
 
   /* Define styles for .window with .half class */
 .window.half {
@@ -28,6 +33,13 @@
 .window.full {
   width: calc(100% - 40px);
   max-width: calc(100% - 40px);
+}
+
+/* Define styles for .window with .full class */
+.window.img {
+width: 100%;
+height:auto;
+
 }
 
 
@@ -88,6 +100,7 @@ position: absolute;
 top: 0;
 left: 100%; 
 white-space: nowrap; 
+z-index: 5;
 }
 
 
@@ -135,22 +148,18 @@ white-space: nowrap;
 
 .floating {
     position: relative;
-    max-width: 85%;
-    max-height: 85%;
-    border: 1px solid #eeff00;
     text-align: justify;
     padding-left: 5%;
     padding-right: 5%;
     display: inline-block; 
     z-index: 2;
-    animation: wobble 5s infinite;
     cursor: url('assets/cursors/cursor_15.cur'), auto;
     visibility: hidden;
     opacity: .95;
   }
   
   .floating img {
-    max-width: 98%; /* adjust as needed */
+    max-width: 100%; /* adjust as needed */
     height: auto; /* maintain aspect ratio */
   }
   

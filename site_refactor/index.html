@@ -3,7 +3,6 @@
 <head>
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://unpkg.com/98.css" />
-    <!-- <link rel="stylesheet" type="text/css" href="css/98.css-0.1.18/style98.css"> -->
     <link rel="stylesheet" type="text/css" href="css/styles.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/matter-js/0.14.2/matter.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -12,29 +11,11 @@
 </head>
 <body>
     <div class="bouncing-container"></div>
-
-    <div class="window half">
-        <div class="title-bar">
-          <div class="title-bar-text">A Window With Stuff In It</div>
-          <div class="title-bar-controls">
-            <button aria-label="Minimize"></button>
-            <button aria-label="Maximize"></button>
-            <button aria-label="Close"></button>
-          </div>
-        </div>
-        <div class="window-body">
-          <p>There's so much room for activities!</p>
-        </div>
-      </div>
-
       
-    <div class="window" id="header">
+    <div id="header">
         <div class="ticker-container">
             <h1 class="ticker-text">welcome to my site dot com</h1>
           </div>  
-        <div class="part full">
-            <!-- <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p> -->
-        </div>
     </div>
 
     <div class="window half">
@@ -92,8 +73,10 @@
           <p>There's so much room for activities!</p>
         </div>
       </div>
-      
-      <div class="window full">
+
+      <svg id="lineCanvas"></svg>
+
+      <div class="window half">
         <div class="title-bar">
           <div class="title-bar-text">A Window With Stuff In It</div>
           <div class="title-bar-controls">
@@ -102,52 +85,63 @@
             <button aria-label="Close"></button>
           </div>
         </div>
-
-        <div class="window half">
-            <div class="title-bar">
-              <div class="title-bar-text">A Window With Stuff In It</div>
-              <div class="title-bar-controls">
-                <button aria-label="Minimize"></button>
-                <button aria-label="Maximize"></button>
-                <button aria-label="Close"></button>
-              </div>
-            </div>
-            <div class="window-body">
-              <p>There's so much room for activities!</p>
-            </div>
-          </div>
-
-    <div class="float-container">
-        <svg id="lineCanvas"></svg>
-        <div class="sub-window large">
-            <div class="floating">
-                <img class="monochrome" src="assets/gif/combined_inverted.gif"></img>
-            </div>
+        <div class="window-body">
+                <div class="floating">
+                    <img class="monochrome" src="assets/gif/combined_inverted.gif"></img>
+                </div>
         </div>
-        <div class="right-container">
-            <div class="sub-window">
+      </div>
+
+
+      <div class="window half">
+        <div class="title-bar">
+          <div class="title-bar-text">A Window With Stuff In It</div>
+          <div class="title-bar-controls">
+            <button aria-label="Minimize"></button>
+            <button aria-label="Maximize"></button>
+            <button aria-label="Close"></button>
+          </div>
+        </div>
+        <div class="window-body">
                 <div class="floating">
                     <img class="monochrome" src="assets/gif/area_inverted.gif"></img>
                 </div>
-            </div>
-            <div class="sub-window">
+        </div>
+      </div>
+
+      <div class="window half">
+        <div class="title-bar">
+          <div class="title-bar-text">A Window With Stuff In It</div>
+          <div class="title-bar-controls">
+            <button aria-label="Minimize"></button>
+            <button aria-label="Maximize"></button>
+            <button aria-label="Close"></button>
+          </div>
+        </div>
+        <div class="window-body">
                 <div class="floating">
                     <img class="monochrome" src="assets/gif/point_inverted.gif"></img>
                 </div>
-            </div>
-            <div class="sub-window" id="contours">
+        </div>
+      </div>
+
+
+      <div class="window half">
+        <div class="title-bar">
+          <div class="title-bar-text">A Window With Stuff In It</div>
+          <div class="title-bar-controls">
+            <button aria-label="Minimize"></button>
+            <button aria-label="Maximize"></button>
+            <button aria-label="Close"></button>
+          </div>
+        </div>
+        <div class="window-body">
                 <div class="floating">
                     <img class="monochrome" src="assets/gif/polyline_inverted.gif"></img>
                 </div>
-            </div>
         </div>
-    </div>
-    <div class="window">
-        <div class="part full">
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-        </div>
-    </div>
-        
+      </div>
+
     <script src="js/script.js"></script>
 
 </body>
