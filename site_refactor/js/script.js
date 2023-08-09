@@ -1,96 +1,71 @@
-window.onload = function() {
-    var windows = document.getElementsByClassName('window');
-    for (var i = 0; i < windows.length; i++) {
+window.addEventListener('load', function() {
+  var windows = document.getElementsByClassName('window');
+  var svg = createSvgElement();
+
+  for (var i = 0; i < windows.length; i++) {
       var offset = Math.random() * 10;
       windows[i].style.transform = 'translate(' + offset + '%, ' + offset + '%)';
-    }
-  };
-  
-    
+      windows[i].style.top = Math.random() * 5 + '%'; // limit to 5%
+      windows[i].style.left = Math.random() * 20 + '%'; // limit to 20%
 
-    // assign floating parts to a random position within their div
-    // var floaters = document.getElementsByClassName('floating');
-    // for (var i = 0; i < floaters.length; i++) {
-    //     floaters[i].style.top = Math.random() * 10 + '%'; // limit to 10%
-    //     floaters[i].style.left = Math.random() * 10 + '%'; // limit to 10%
-    // }
+      var duration = Math.random() * (15 - 10) + 10; // Random duration between 10 and 20 seconds
+      var delay = Math.random() * 1; // Random delay up to 1 second
+      windows[i].style.animationDuration = duration + 's';
+      windows[i].style.animationDelay = delay + 's';
 
+      // Update lines for SVG
+      updateLines(svg, windows[i]);
+  }
 
-    // randomly delay the start of floater wobbling animation
-    var floaters = document.getElementsByClassName('window');
-    for (var i = 0; i < floaters.length; i++) {
-        // Random wobbling
-        var duration = Math.random() * (15 - 10) + 10; // Random duration between 10 and 20 seconds
-        var delay = Math.random() * 1; // Random delay up to 1 second
-        floaters[i].style.animationDuration = duration + 's';
-        floaters[i].style.animationDelay = delay + 's';
-    }
-
-    // Create the SVG element
-    var svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
-    svg.style.width = '100%';
-    svg.style.height = '100%';
-    svg.style.position = 'absolute';
-    svg.style.top = '0';
-    svg.style.left = '0';
-    svg.style.zIndex = '1000';
-    svg.style.pointerEvents = 'none'; 
-    document.body.appendChild(svg);
-
-    // Create the line element
-    var line = document.createElementNS('http://www.w3.org/2000/svg', 'line');
-    // line.setAttribute('fill', '#eeff00');
-    // line.setAttribute('fill-opacity', '0.3');
-    line.setAttribute('stroke', '#eeff00');
-    line.setAttribute('stroke-width', '2');
-    svg.appendChild(line);
-
- // Start the animation loop
-requestAnimationFrame(function updateLines() {
-    var floaters = document.getElementsByClassName('floating');
-    var lines = svg.getElementsByTagName('line');
-    
-    // If there are not enough lines, create more
-    while (lines.length < floaters.length - 1) {
-        var line = document.createElementNS('http://www.w3.org/2000/svg', 'line');
-        line.setAttribute('stroke', '#eeff00');
-        line.setAttribute('stroke-width', '2');
-        svg.appendChild(line);
-    }
-    
-    // Update the position of each line
-    for (var i = 0; i < floaters.length - 1; i++) {
-        var rect1 = floaters[i].getBoundingClientRect();
-        var x1 = rect1.left + window.scrollX + rect1.width / 2;
-        var y1 = rect1.top + window.scrollY + rect1.height / 2;
-        
-        var rect2 = floaters[i + 1].getBoundingClientRect();
-        var x2 = rect2.left + window.scrollX + rect2.width / 2;
-        var y2 = rect2.top + window.scrollY + rect2.height / 2;
-        
-        lines[i].setAttribute('x1', x1);
-        lines[i].setAttribute('y1', y1);
-        lines[i].setAttribute('x2', x2);
-        lines[i].setAttribute('y2', y2);
-    }
-    
-    // Call this function again on the next frame
-    requestAnimationFrame(updateLines);
+  document.body.appendChild(svg);
 });
 
-window.addEventListener('load', function() {
-    var sections = document.getElementsByClassName('section');
-    for (var i = 0; i < sections.length; i++) {
-        var sectionHeight = sections[i].offsetHeight;
-        var parts = sections[i].getElementsByClassName('part');
-        for (var j = 0; j < parts.length; j++) {
-            if (parts[j].offsetHeight > sectionHeight) {
-                var scaleRatio = sectionHeight / parts[j].offsetHeight;
-                parts[j].style.transform = 'scale(' + scaleRatio + ')';
-            }
-        }
-    }
-});
+// Create the SVG element
+function createSvgElement() {
+  var svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+  svg.style.width = '100%';
+  svg.style.height = '100%';
+  svg.style.position = 'absolute';
+  svg.style.top = '0';
+  svg.style.left = '0';
+  svg.style.zIndex = '0'; // Place the SVG below other elements
+  svg.style.pointerEvents = 'none';
+  return svg;
+}
+
+// Update lines for SVG
+function updateLines(svg, floater) {
+  var lines = svg.getElementsByTagName('line');
+
+  // If there are not enough lines, create more
+  while (lines.length < floater.length - 1) {
+      var line = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+      line.setAttribute('stroke', '#eeff00');
+      line.setAttribute('stroke-width', '2');
+      svg.appendChild(line);
+  }
+
+  // Update the position of each line
+  for (var i = 0; i < floater.length - 1; i++) {
+      var rect1 = floater[i].getBoundingClientRect();
+      var x1 = rect1.left + window.scrollX + rect1.width / 2;
+      var y1 = rect1.top + window.scrollY + rect1.height / 2;
+
+      var rect2 = floater[i + 1].getBoundingClientRect();
+      var x2 = rect2.left + window.scrollX + rect2.width / 2;
+      var y2 = rect2.top + window.scrollY + rect2.height / 2;
+
+      lines[i].setAttribute('x1', x1);
+      lines[i].setAttribute('y1', y1);
+      lines[i].setAttribute('x2', x2);
+      lines[i].setAttribute('y2', y2);
+  }
+
+  // Call this function again on the next frame
+  requestAnimationFrame(function() {
+      updateLines(svg, floater);
+  });
+}
 
 
 
@@ -159,6 +134,29 @@ document.addEventListener('DOMContentLoaded', function() {
             animateDiv(div, x, y, vx, vy, height); // Pass the calculated height
     }
 }
+
+  // Code for attaching event listeners to window buttons
+  const windows = document.querySelectorAll('.window');
+  
+  windows.forEach(windowElement => {
+    const windowBody = windowElement.querySelector('.window-body');
+    const maximizeButton = windowElement.querySelector('[aria-label="Maximize"]');
+    const closeButton = windowElement.querySelector('[aria-label="Close"]');
+    const minimizeButton = windowElement.querySelector('[aria-label="Minimize"]');
+    
+    maximizeButton.addEventListener('click', () => {
+      windowElement.style.width = '100vw';
+      windowElement.style.height = '100vh';
+    });
+    
+    closeButton.addEventListener('click', () => {
+      windowElement.remove();
+    });
+    
+    minimizeButton.addEventListener('click', () => {
+      windowBody.classList.toggle('hidden');
+    });
+  });
 });
 
 function animateDiv(div, x, y, vx, vy, containerHeight) {
@@ -276,11 +274,11 @@ document.getElementById('command-prompt').addEventListener('keydown', function(e
 
   // Define the unique messages
   var messages = [
-    'Message 1: Your system is ready!',
-    'Message 2: Loading modules...',
-    'Message 3: Connecting to the network...',
-    'Message 4: Finalizing setup...',
-    'Message 5: Welcome to your application!'
+    'Beep boop I am a computer',
+    'This page was painstakingly programmed in assembly',
+    'Trust me!',
+    'Would I lie to you?',
+    'AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'
   ];
 
   // Define the time intervals for displaying the messages (in milliseconds)
@@ -348,3 +346,5 @@ const backgroundImages = [
   // Call the onPageLoad function when the page has finished loading
   window.addEventListener('load', onPageLoad);
   
+
+//////////
