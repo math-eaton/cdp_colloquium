@@ -94,6 +94,8 @@ document.addEventListener('DOMContentLoaded', function() {
     var sections = document.querySelectorAll('.section');
     var floatContainer = document.querySelector('.float-container');
     var bouncingContainers = document.getElementsByClassName('bouncing-container'); // Get elements by class name
+    var windows = document.querySelectorAll('.window'); // Get all window elements
+
 
     // Calculate the height based on the position of the float-container
     var height = 0;
@@ -105,10 +107,9 @@ document.addEventListener('DOMContentLoaded', function() {
     // Loop through all bouncing containers
     for (var i = 0; i < bouncingContainers.length; i++) {
         var bouncingContainer = bouncingContainers[i];
-        bouncingContainer.style.height = height + 'px';
 
         // Number of bouncing divs
-        var numDivs = 5;
+        var numDivs = 10;
 
         // Create and animate the bouncing divs
         for (var j = 0; j < numDivs; j++) {
@@ -125,39 +126,49 @@ document.addEventListener('DOMContentLoaded', function() {
             bouncingContainer.appendChild(div);
           
             // Initial position and velocity
-            var x = Math.random() * window.innerWidth;
-            var y = Math.random() * height; // Use the calculated height
-            var vx = (Math.random() - 0.5) * .85;
-            var vy = (Math.random() - 0.5) * .85;
+            var x = Math.random() * screen.width;
+            var y = Math.random() * screen.height;
+            var vx = (Math.random() - 0.5) * 0.85;
+            var vy = (Math.random() - 0.5) * 0.85;
 
             // Animate the div
             animateDiv(div, x, y, vx, vy, height); // Pass the calculated height
     }
 }
 
-  // Code for attaching event listeners to window buttons
-  const windows = document.querySelectorAll('.window');
-  
-  windows.forEach(windowElement => {
-    const windowBody = windowElement.querySelector('.window-body');
-    const maximizeButton = windowElement.querySelector('[aria-label="Maximize"]');
-    const closeButton = windowElement.querySelector('[aria-label="Close"]');
-    const minimizeButton = windowElement.querySelector('[aria-label="Minimize"]');
-    
-    maximizeButton.addEventListener('click', () => {
-      windowElement.style.width = '100vw';
-      windowElement.style.height = '100vh';
-    });
-    
-    closeButton.addEventListener('click', () => {
-      windowElement.remove();
-    });
-    
-    minimizeButton.addEventListener('click', () => {
-      windowBody.classList.toggle('hidden');
-    });
-  });
+      // Adjust window widths randomly
+      windows.forEach(function(windowElement) {
+        var currentWidth = windowElement.offsetWidth;
+        var randomPercentage = Math.random() * 0.2 + 0.9; // Random value between 0.9 and 1.1
+        var newWidth = currentWidth * randomPercentage;
+
+        windowElement.style.width = newWidth + 'px';
+      });
+
+      // Code for attaching event listeners to window buttons
+      windows.forEach(windowElement => {
+        const windowBody = windowElement.querySelector('.window-body');
+        const maximizeButton = windowElement.querySelector('[aria-label="Maximize"]');
+        const closeButton = windowElement.querySelector('[aria-label="Close"]');
+        const minimizeButton = windowElement.querySelector('[aria-label="Minimize"]');
+        
+        maximizeButton.addEventListener('click', () => {
+          windowElement.style.width = '100vw';
+          windowElement.style.height = '100vh';
+        });
+        
+        closeButton.addEventListener('click', () => {
+          windowElement.remove();
+        });
+        
+        minimizeButton.addEventListener('click', () => {
+          windowBody.classList.toggle('hidden');
+        });
+      });
 });
+
+
+
 
 function animateDiv(div, x, y, vx, vy, containerHeight) {
     // Update position
@@ -320,10 +331,8 @@ function closeSplash() {
 // Array of image URLs for background images
 const backgroundImages = [
     'assets/wallpapers/wind.jpg',
-    'assets/wallpapers/turquoise.png',
     'assets/wallpapers/clouds.jpg',
-    'assets/wallpapers/machine.png',
-    'assets/wallpapers/diet-bliss.jpg',
+    'assets/wallpapers/diet_bliss.jpg',
   ];
   
   // Function to select a random image URL from the array
