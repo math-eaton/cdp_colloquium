@@ -84,17 +84,17 @@ $(document).ready(function() {
   });
   
   // Make window elements resizable
-  $(".window").resizable({
-      handles: "n, e, s, w, ne, se, sw, nw",
-      minWidth: 100, // Set minimum width
-      minHeight: 100, // Set minimum height
-      maxWidth: window.innerWidth, // Set maximum width
-      maxHeight: window.innerHeight, // Set maximum height
-      resize: function(event, ui) {
-          // Update lines for SVG (if needed)
-          updateLines(svg, windows);
-      }
-  });
+  // $(".window").resizable({
+  //     handles: "n, e, s, w, ne, se, sw, nw",
+  //     minWidth: 100, // Set minimum width
+  //     minHeight: 100, // Set minimum height
+  //     maxWidth: window.innerWidth, // Set maximum width
+  //     maxHeight: window.innerHeight, // Set maximum height
+  //     resize: function(event, ui) {
+  //         // Update lines for SVG (if needed)
+  //         updateLines(svg, windows);
+  //     }
+  // });
 });
 
 ////// bouncer animation
