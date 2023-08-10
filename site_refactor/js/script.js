@@ -387,15 +387,15 @@ document.getElementById('command-prompt').addEventListener('keydown', function(e
 
   // Define the unique messages
   var messages = [
+    'Just kidding they all do the same thing',
     'Beep boop I am a computer',
     'Im getting ready to compute',
-    'Cant wait to show you',
     'god i hope this works',
     'AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'
   ];
 
   // Define the time intervals for displaying the messages (in milliseconds)
-  var messageIntervals = [2000, 1500, 1000, 500, 250];
+  var messageIntervals = [3000, 1800, 1000, 500, 250];
 
   // Start a separate timer for the countdown display
   var displayCountdown = 3 * 10; // 3 seconds, with 10 updates per second

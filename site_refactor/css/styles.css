@@ -64,6 +64,7 @@ body {
 
 .window-body {
   position: relative; /* Set to relative positioning */
+  height:100%;
 }
 
 .window-body:not(.text-content) {
@@ -262,11 +263,23 @@ body {
   margin: 25vh;
 }
 
+
 .audio-player {
   display: flex;
   align-items: center;
-  margin-left:1%;
+  flex-direction: row; /* Align content vertically */
+  margin-left: 1%;
+  width: 100%; /* Occupy the full width of the container */
+}
 
+.field-row {
+  width: 400px; /* Set a specific width for the slider */
+  margin: 1%;
+}
+
+.field-row p {
+  width: 100%; /* Expand the <p> tag to the full width of the container */
+  text-align: center; /* Center the text horizontally */
 }
 
 #audioButton {

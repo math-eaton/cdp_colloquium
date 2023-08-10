@@ -13,7 +13,17 @@
 <body>
     
 <div class="window-body" id="splash-window">
-    <textarea id="command-prompt" rows="25" cols="80" autofocus>C:\> Press any key to boot 
+    <textarea id="command-prompt" rows="25" cols="80" autofocus>C:\> MS CDP_HEATON Startup Menu
+        =============================
+        1. Normal
+        2. Logged (\BOOTLOG.TXT)
+        3. Safe Mode
+        4. Step-by-step confirmation
+        5. Command prompt only
+        6. Safe mode command prompt only
+
+        F5=Safe Mode Shift+F5=Command prompt Shift+F8= Step-by-step confirmation [N]
+        
 or press escape to continue to webpage</textarea>
 </div>
 
@@ -63,21 +73,49 @@ or press escape to continue to webpage</textarea>
 
 </div>
 
-<!-- <div class="window half">
-    <div class="title-bar">
-        <div class="title-bar-text">A Window With Stuff In It</div>
-        <div class="title-bar-controls">
-            <button aria-label="Minimize"></button>
-            <button aria-label="Maximize" class="maximize-button"></button>
-            <button aria-label="Restore" class="restore-button"></button>
-            <button aria-label="Close"></button>
+<div class="windows-container">
+    <div class="window half about">
+        <div class="title-bar">
+            <div class="title-bar-text">About: Peripheral Transmissions</div>
+            <div class="title-bar-controls">
+                <button aria-label="Minimize"></button>
+                <button aria-label="Maximize" class="maximize-button"></button>
+                <button aria-label="Restore" class="restore-button"></button>
+                <button aria-label="Close"></button>
+            </div>
+        </div>
+        <div class="window-body text-content">
+            <p>A geographic radio receiver.</p>
+            <p>This application enables a user to survey an audio landscape constructed by internet radio ~transmissions~ tethered to particular geographic coordinates.</p>
+            <p>The interpolated spaces between these discrete coordinates create alternative boundary regions constructed by radio and its attendant cultural affinities rather than the (often violently drawn) historical lines found on a political map.</p>
+        </div>
+        <div class="status-bar">
+        <p class="status-bar-field">Spatial Infrastructure</p>
+        <p class="status-bar-field">Sonic Visualization + Cartography</p>
+        <p class="status-bar-field">Space + Sight + Sound</p>
         </div>
     </div>
-    <div class="window-body text-content">lorem ipsum</div>
-    <div class="status-bar">
-      <p class="status-bar-field">Spatial Infrastructure</p>
-      <p class="status-bar-field">Cartography + Processed Video</p>
-      <p class="status-bar-field">Space + Sight</p>
+
+    <div class="window full">
+        <div class="title-bar">
+            <div class="title-bar-text">Peripheral Transmissions</div>
+            <div class="title-bar-controls">
+                <button aria-label="Minimize"></button>
+                <button aria-label="Maximize" class="maximize-button"></button>
+                <button aria-label="Restore" class="restore-button"></button>
+                <button aria-label="Close"></button>
+            </div>
+        </div>
+        <div class="window-body text-content">
+            <div class="floating">
+                <img src="assets/gif/peripheralTransmissions.gif"></img>
+            </div>
+        </div>
+        <div class="status-bar">
+        <p class="status-bar-field">Spatial Infrastructure</p>
+        <p class="status-bar-field">Sonic Visualization + Cartography</p>
+        <p class="status-bar-field">Space + Sight + Sound</p>
+        </div>
     </div>
 </div>
 
@@ -99,9 +137,31 @@ or press escape to continue to webpage</textarea>
       <p class="status-bar-field">Cartography + Processed Video</p>
       <p class="status-bar-field">Space + Sight</p>
     </div>
-</div> -->
+</div>
 
 <div class="windows-container">
+    <div class="window" id="WFH_DJ">
+        <div class="title-bar">
+            <div class="title-bar-text">WFH DJ</div>
+            <div class="title-bar-controls">
+                <button aria-label="Minimize"></button>
+                <button aria-label="Maximize" class="maximize-button"></button>
+                <button aria-label="Restore" class="restore-button"></button>
+                <button aria-label="Close"></button>
+            </div>
+        </div>
+        <div class="window-body">
+            <video width="860" height="450" autoplay muted loop>
+                <source src="assets/gif/poetry_demo-1.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            </div>       
+        <div class="status-bar">
+        <p class="status-bar-field">Community Infrastructure</p>
+        <p class="status-bar-field">Sonic Visualization</p>
+        <p class="status-bar-field">Sound + Sight</p>
+        </div>
+    </div>
     <div class="window half about">
         <div class="title-bar">
             <div class="title-bar-text">About: Concrete Poetry</div>
@@ -126,9 +186,14 @@ or press escape to continue to webpage</textarea>
         <p class="status-bar-field">Sound + Sight</p>
         </div>
     </div>
-    <div class="window" id="WFH_DJ">
+</div>
+
+<div class="windows-container">
+
+
+    <div class="window half about">
         <div class="title-bar">
-            <div class="title-bar-text">WFH DJ</div>
+            <div class="title-bar-text">About: WFH DJ</div>
             <div class="title-bar-controls">
                 <button aria-label="Minimize"></button>
                 <button aria-label="Maximize" class="maximize-button"></button>
@@ -136,21 +201,20 @@ or press escape to continue to webpage</textarea>
                 <button aria-label="Close"></button>
             </div>
         </div>
-        <div class="window-body">
-            <video width="860" height="450" autoplay muted loop>
-                <source src="assets/gif/poetry_demo-1.mp4" type="video/mp4">
-                Your browser does not support the video tag.
-            </video>
-            </div>       
+        <div class="window-body text-content"><p>This is a patch [script] written in Max/MSP, a visual coding language that is great for bridging audio inside and outside the computer.</p>
+
+            <p>The goal of this patch was to capture some of the thousands of miniature events that take place while 
+                using a computer during a typical workday and recontextualize those events into an audio piece - in this case a remix of Terry Rileys 1968 minimalist piece [In C].</p>
+
+            <p>Keypresses, mouse downs, and microphone transients trigger a count. At certain numeric thresholds, audio content and quality changes, sequencing the remix.</p>
+            </div>
         <div class="status-bar">
-        <p class="status-bar-field">Community Infrastructure</p>
-        <p class="status-bar-field">Sonic Visualization</p>
-        <p class="status-bar-field">Sound + Sight</p>
+        <p class="status-bar-field">Sonic Infrastructure</p>
+        <p class="status-bar-field">Data Sonification</p>
+        <p class="status-bar-field">Sound</p>
         </div>
     </div>
-</div>
 
-<div class="windows-container">
     <div class="window" id="WFH_DJ">
         <div class="title-bar">
             <div class="title-bar-text">WFH DJ</div>
@@ -167,7 +231,7 @@ or press escape to continue to webpage</textarea>
                 Your browser does not support the video tag.
             </video>
             </div>       
-        <div class="field-row audio-player" style="width: 200px" style="margin: 5%">
+        <div class="field-row audio-player">
             <label for="range26">Volume:</label>
             <label for="range26">Low</label>
             <input id="range26" type="range" min="0" max="1" step="0.01" value="0.5" />
@@ -177,28 +241,8 @@ or press escape to continue to webpage</textarea>
             </audio>
             <img id="playButton" src="assets/sprites/loudspeaker_muted-0.png" alt="Play">
             <img id="pauseButton" src="assets/sprites/loudspeaker_rays-0.png" alt="Pause" style="display: none;">
+            <p>CLICK HERE TO LISTEN TO A SAMPLE!</p>
         </div>
-        <div class="status-bar">
-        <p class="status-bar-field">Sonic Infrastructure</p>
-        <p class="status-bar-field">Data Sonification</p>
-        <p class="status-bar-field">Sound</p>
-        </div>
-    </div>
-
-    <div class="window half about">
-        <div class="title-bar">
-            <div class="title-bar-text">About: WFH DJ</div>
-            <div class="title-bar-controls">
-                <button aria-label="Minimize"></button>
-                <button aria-label="Maximize" class="maximize-button"></button>
-                <button aria-label="Restore" class="restore-button"></button>
-                <button aria-label="Close"></button>
-            </div>
-        </div>
-        <div class="window-body text-content">This is a patch or script written in Max/MSP, a visual coding language that is great for bridging audio inside and outside the computer.</p>
-
-            <p>The goal of this patch was to capture some of the thousands of miniature events that take place while using a computer during a typical workday and recontextualize those events into an audio piece - in this case a remix of Terry Rileys 1968 minimalist piece In C.</p>
-            </div>
         <div class="status-bar">
         <p class="status-bar-field">Sonic Infrastructure</p>
         <p class="status-bar-field">Data Sonification</p>
