@@ -336,9 +336,9 @@ document.getElementById('command-prompt').addEventListener('keydown', function(e
   // Define the unique messages
   var messages = [
     'Beep boop I am a computer',
-    'This page was painstakingly programmed in assembly',
-    'Trust me!',
-    'Would I lie to you?',
+    'Im getting ready to compute',
+    'Cant wait to show you',
+    'god i hope this works',
     'AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'
   ];
 
