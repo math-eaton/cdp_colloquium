@@ -100,16 +100,29 @@ $(document).ready(function() {
 ////// bouncer animation
 
 // Array of image URLs
+// var images = [
+//     'assets/bouncing/18468.png',
+//     'assets/bouncing/39412.png',
+//     'assets/bouncing/84319.png',
+//     'assets/bouncing/119687.png',
+//     'assets/bouncing/159877.png',
+//     'assets/bouncing/167237.png',
+//     'assets/bouncing/173078.png',
+//     'assets/bouncing/182174.png',
+//   ];
+
 var images = [
-    'assets/bouncing/18468.png',
-    'assets/bouncing/39412.png',
-    'assets/bouncing/84319.png',
-    'assets/bouncing/119687.png',
-    'assets/bouncing/159877.png',
-    'assets/bouncing/167237.png',
-    'assets/bouncing/173078.png',
-    'assets/bouncing/182174.png',
-  ];
+  'assets/sprites/computer-4.png',
+  'assets/sprites/tree-0.png',
+  'assets/sprites/users-2.png',
+  'assets/sprites/mouse_snap.png',
+  'assets/sprites/world_phonereceiver.png',
+  'assets/sprites/magnifying_glass-0.png',
+  'assets/sprites/cd_drive-3.png',
+  'assets/sprites/modem-5.png',
+  'assets/sprites/msg_warning-0.png',
+  'assets/sprites/help_question_mark-0.png',
+];
 
   document.addEventListener('DOMContentLoaded', function() {
     var sections = document.querySelectorAll('.section');
@@ -279,10 +292,10 @@ function animateDiv(div, x, y, vx, vy, containerHeight) {
   
   // URLs of the GIFs
 const gifUrls = [
-    'assets/gif/combined_inverted.gif',
-    'assets/gif/area_inverted.gif',
-    'assets/gif/point_inverted.gif',
-    'assets/gif/polyline_inverted.gif',
+    'assets/gif/processed_imagery_area.gif',
+    'assets/gif/processed_imagery_point.gif',
+    'assets/gif/processed_imagery_polyline.gif',
+    'assets/gif/combined.gif',
   ];
   
   // Preload the GIFs and attach load event listeners

@@ -27,6 +27,9 @@ body {
 .window {
   animation: wobble 8s infinite;
   overflow: hidden; /* Hide content that overflows the window */
+  /* display: flex; Use flexbox to center content vertically and horizontally */
+  /* flex-direction: column; Stack content vertically */
+  /* align-items: center; Center content horizontally */
 }
 
 .title-bar {
@@ -46,35 +49,30 @@ body {
 .window.img {
   width: 100%;
   height: auto;
-  align-items: center;
   margin: 0; /* Reset margin */
   padding: 0; /* Reset padding */
 }
 
-
 .window-body {
-  max-width: 100%; /* Ensure content doesn't exceed window width */
-  max-height: 100%; /* Ensure content doesn't exceed window height */
-  height: auto; /* Allow the height to adjust based on content */
   position: relative; /* Set to relative positioning */
-
 }
 
-.section {
-  display: flex;
-  justify-content: space-between;
-  align-items: left;
-  width: 25vw;
-  margin-top: 1vh;
-  margin-bottom: 1vh;
-  position: relative;
+.window-body:not(.text-content) {
+  display: flex; /* Use flexbox to center content vertically and horizontally */
+  flex-direction: column; /* Stack content vertically */
+  align-items: center; /* Center content horizontally */
+  justify-content: center; /* Center content vertically */
+  height: 100%; /* Make the content fill the window's height */
+  width: 100%; /* Make the content fill the window's width */
+  flex:1;
 }
+
 
 .ticker-container {
   display: block;
   width: 100%;
   overflow: hidden;
-  color: #eeff00;
+  color: #ff0000;
   position: relative; /* Change to relative positioning */
   height: 50px;
   align-items: center;
@@ -233,9 +231,10 @@ body {
   position: relative;
   justify-content: center; /* Center the windows horizontally */
   align-items: center; /* Center the windows vertically */
-  max-width: 1200px; /* Set a maximum width for the container */
-  max-height: 70vh;
-  left: 8%;
+  width: 50%;
+  height: auto;
+  left: 15%;
+  margin: 25vh;
 }
 
 .audio-player {
@@ -252,8 +251,10 @@ body {
   cursor: pointer;
   width: 30px;
   height: 30px;
-  margin: 0 10px;
-  z-index: 99999;
+}
+
+.status-bar {
+  flex-shrink: 0;
 }
 
 
