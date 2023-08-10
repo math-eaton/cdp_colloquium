@@ -3,10 +3,10 @@ window.addEventListener('load', function() {
   var svg = createSvgElement();
 
   for (var i = 0; i < windows.length; i++) {
-      var offset = Math.random() * 10;
-      windows[i].style.transform = 'translate(' + offset + '%, ' + offset + '%)';
-      windows[i].style.top = Math.random() * 5 + '%'; // limit to 5%
-      windows[i].style.left = Math.random() * 20 + '%'; // limit to 20%
+      // var offset = Math.random() * 10;
+      // windows[i].style.transform = 'translate(' + offset + '%, ' + offset + '%)';
+      // windows[i].style.top = Math.random() * 1 + '%'; // limit to 5%
+      // windows[i].style.left = Math.random() * 1 + '%'; // limit to 20%
 
       var duration = Math.random() * (15 - 10) + 10; // Random duration between 10 and 20 seconds
       var delay = Math.random() * 1; // Random delay up to 1 second
@@ -157,13 +157,13 @@ var images = [
     }
 
     // Adjust window widths randomly
-    windows.forEach(function(windowElement) {
-        var currentWidth = windowElement.offsetWidth;
-        var randomPercentage = Math.random() * 0.2 + 0.9; // Random value between 0.9 and 1.1
-        var newWidth = currentWidth * randomPercentage;
+    // windows.forEach(function(windowElement) {
+    //     var currentWidth = windowElement.offsetWidth;
+    //     var randomPercentage = Math.random() * 0.4 + 0.45; // Random value between 0.9 and 1.1
+    //     var newWidth = currentWidth * randomPercentage;
 
-        windowElement.style.width = newWidth + 'px';
-    });
+    //     windowElement.style.width = newWidth + 'px';
+    // });
 
     // Code for attaching event listeners to window buttons
     windows.forEach(windowElement => {

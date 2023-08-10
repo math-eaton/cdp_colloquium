@@ -115,13 +115,6 @@ body {
 
 }
 
-.float-container {
-  position: relative;
-  width: 98vw;
-  height: 98vh;
-  display: flex;
-}
-
 .sub-section.large {
   flex-basis: 50%;
   height: 100%;
@@ -240,6 +233,56 @@ body {
   box-sizing: border-box;
   padding: 1%;
   margin: 0 !important;
+}
+
+#radio_container {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap; /* Allow wrapping to create a grid layout */
+  justify-content: center; /* Center the windows horizontally */
+  align-items: center; /* Center the windows vertically */
+  /* gap: 2%; Add some spacing between child elements */
+  /* margin: 0 auto; Center the container horizontally */
+  max-width: 1200px; /* Set a maximum width for the container */
+  max-height: 70vh;
+}
+
+#point, #area, #combined, #polyline {
+  width: 22%; /* Each window takes up a bit less than half of the container's width with spacing */
+  /* position:absolute; */
+  /* padding: 2vw; */
+  z-index: 2;
+}
+
+#point {
+  top: 0;
+  left: 0;
+  transform: translate(0, -5%);
+  width:35%;
+  margin:5%;
+}
+
+#area {
+  top: 0;
+  right: 0;
+  transform: translate(0, -5%);
+  width:30%;
+  margin-bottom:-15%;
+}
+
+#combined {
+  top: 0;
+  left: 0;
+  transform: translate(-2%, -5%);
+  margin: -10%;
+  width:55%;
+  z-index: 1;
+}
+
+#polyline {
+  top: 0;
+  right: 0;
+  transform: translate(0, -5%);
 }
 
 @font-face {
