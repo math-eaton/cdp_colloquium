@@ -30,6 +30,7 @@ body {
   align-items: center; /* Align items vertically */
   gap: 10px; /* Add spacing between windows */
   margin-top: 20px; /* Add some top margin */
+  padding: 5vw;
 }
 
 .window {
@@ -177,9 +178,9 @@ body {
 /* Style for the bouncing divs */
 .bouncing {
   position: absolute;
-  width: 50px; /* Adjust the width and height as needed */
-  height: 50px;
-  border-radius: 50%; /* To make it circular */
+  width: 40px; /* Adjust the width and height as needed */
+  height: 40px;
+  /* border-radius: 50%; To make it circular */
   opacity: 0.7;
   cursor: url('assets/cursors/cursor_15.cur'), auto;
 }
@@ -292,8 +293,8 @@ body {
   align-items: center; /* Center the windows vertically */
   /* gap: 2%; Add some spacing between child elements */
   /* margin: 0 auto; Center the container horizontally */
-  max-width: 1200px; /* Set a maximum width for the container */
-  max-height: 70vh;
+  max-width: 1050px; /* Set a maximum width for the container */
+  max-height: 60vh;
   left: 8%;
 }
 

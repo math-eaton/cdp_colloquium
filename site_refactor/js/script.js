@@ -137,37 +137,46 @@ var images = [
         height += sections[i].offsetHeight + 2; // 2 is for the top and bottom margin
     }
 
-    // Loop through all bouncing containers
-    for (var i = 0; i < bouncingContainers.length; i++) {
-        var bouncingContainer = bouncingContainers[i];
+  // Initialize the index of the current image
+  var currentImageIndex = 0;
 
-        // Number of bouncing divs
-        var numDivs = 10;
+  // Loop through all bouncing containers
+  for (var i = 0; i < bouncingContainers.length; i++) {
+      var bouncingContainer = bouncingContainers[i];
 
-        // Create and animate the bouncing divs
-        for (var j = 0; j < numDivs; j++) {
-            var div = document.createElement('div');
-            div.className = 'bouncing';
+      // Number of bouncing divs
+      var numDivs = 10;
 
-            // Choose a random image from the array
-            var randomImage = images[Math.floor(Math.random() * images.length)];
+      // Create and animate the bouncing divs
+      for (var j = 0; j < numDivs; j++) {
+          var div = document.createElement('div');
+          div.className = 'bouncing';
 
-            // Set the background image
-            div.style.backgroundImage = 'url(' + randomImage + ')';
-            div.style.backgroundSize = 'cover'; // Cover the entire div
+          // Get the image URL based on the current index
+          var selectedImage = images[currentImageIndex];
 
-            bouncingContainer.appendChild(div);
+          // Set the background image
+          div.style.backgroundImage = 'url(' + selectedImage + ')';
+          div.style.backgroundSize = 'cover'; // Cover the entire div
 
-            // Initial position and velocity
-            var x = Math.random() * document.documentElement.scrollWidth;
-            var y = Math.random() * document.documentElement.scrollHeight;
-            var vx = (Math.random() - 0.5) * 0.85;
-            var vy = (Math.random() - 0.5) * 0.85;
+          bouncingContainer.appendChild(div);
 
-            // Animate the div
-            animateDiv(div, x, y, vx, vy, height); // Pass the calculated height
-        }
-    }
+          // Increment the index and reset if necessary
+          currentImageIndex++;
+          if (currentImageIndex >= images.length) {
+              currentImageIndex = 0;
+          }
+
+          // Initial position and velocity
+          var x = Math.random() * document.documentElement.scrollWidth;
+          var y = Math.random() * document.documentElement.scrollHeight;
+          var vx = (Math.random() - 0.5) * 0.85;
+          var vy = (Math.random() - 0.5) * 0.85;
+
+          // Animate the div
+          animateDiv(div, x, y, vx, vy, height); // Pass the calculated height
+      }
+  }
 
     ///
     // add audio player
