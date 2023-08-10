@@ -3,12 +3,12 @@
 <head>
     <!-- <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap" rel="stylesheet"> -->
     <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link href="css/os-gui/windows-default.css" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="https://unpkg.com/98.css" />
     <link rel="stylesheet" type="text/css" href="css/styles.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/matter-js/0.14.2/matter.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/matter-js/0.14.2/matter.min.js"></script>
 </head>
 <body>
     
@@ -16,6 +16,10 @@
     <textarea id="command-prompt" rows="25" cols="80" autofocus>C:\> Press any key to boot 
 or press escape to continue to webpage</textarea>
 </div>
+
+
+
+  
 
 <div class="window half" id="window-ticker">
     <div class="title-bar">
@@ -48,9 +52,7 @@ or press escape to continue to webpage</textarea>
             <button aria-label="Close"></button>
         </div>
     </div>
-    <div class="window-body">
-        <p>There's so much room for activities!</p>
-    </div>
+    <div class="window-body">             </div>
     <div class="status-bar">
       <p class="status-bar-field">Spatial Infrastructure</p>
       <p class="status-bar-field">Cartography + Processed Video</p>
@@ -78,9 +80,9 @@ or press escape to continue to webpage</textarea>
     </div>
 </div>
 
-<div class="window half">
+<div class="window half" id="WFH_DJ">
     <div class="title-bar">
-        <div class="title-bar-text">A Window With Stuff In It</div>
+        <div class="title-bar-text">WFH DJ</div>
         <div class="title-bar-controls">
             <button aria-label="Minimize"></button>
             <button aria-label="Maximize" class="maximize-button"></button>
@@ -88,13 +90,27 @@ or press escape to continue to webpage</textarea>
             <button aria-label="Close"></button>
         </div>
     </div>
-    <div class="window-body">
-        <p>There's so much room for activities!</p>
+    <div class="window-body floating">
+        <video width="540" height="360" autoplay muted loop>
+            <source src="assets/gif/WFH_DJ.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+        </div>       
+    <div class="field-row audio-player" style="width: 200px" style="margin: 5%">
+        <label for="range26">Volume:</label>
+        <label for="range26">Low</label>
+        <input id="range26" type="range" min="0" max="1" step="0.01" value="0.5" />
+        <label for="range26">High</label>
+        <audio id="myAudio" loop>
+            <source src="assets/audio/WFH_DJ_processed.mp3" type="audio/mpeg">
+        </audio>
+        <img id="playButton" src="assets/sprites/loudspeaker_muted-0.png" alt="Play">
+        <img id="pauseButton" src="assets/sprites/loudspeaker_rays-0.png" alt="Pause" style="display: none;">
     </div>
     <div class="status-bar">
-      <p class="status-bar-field">Spatial Infrastructure</p>
-      <p class="status-bar-field">Cartography + Processed Video</p>
-      <p class="status-bar-field">Space + Sight</p>
+      <p class="status-bar-field">Sonic Infrastructure</p>
+      <p class="status-bar-field">Data Sonification</p>
+      <p class="status-bar-field">Sound</p>
     </div>
 </div>
 

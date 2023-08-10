@@ -156,6 +156,36 @@ var images = [
         }
     }
 
+    ///
+    // add audio player
+    const audio = document.getElementById("myAudio");
+    const playButton = document.getElementById("playButton");
+    const pauseButton = document.getElementById("pauseButton");
+    const volumeSlider = document.getElementById("range26");
+
+    // Set up play and pause button click listeners
+    playButton.addEventListener("click", () => {
+      audio.play();
+      playButton.style.display = "none";
+      pauseButton.style.display = "inline";
+    });
+
+    pauseButton.addEventListener("click", () => {
+      audio.pause();
+      pauseButton.style.display = "none";
+      playButton.style.display = "inline";
+    });
+
+    // Set up volume slider change listener
+    volumeSlider.addEventListener("input", () => {
+      audio.volume = volumeSlider.value;
+    });
+
+    // Initialize audio volume to slider value
+    audio.volume = volumeSlider.value;
+
+  
+
     // Adjust window widths randomly
     // windows.forEach(function(windowElement) {
     //     var currentWidth = windowElement.offsetWidth;
@@ -432,4 +462,25 @@ $(document).ready(function() {
           $(this).css('cursor', 'grab'); // Change cursor back to "grab" when dragging stops
       }
   });
+});
+
+
+//////
+// audio player
+const audio = document.getElementById("myAudio");
+const playButton = document.getElementById("playButton");
+const pauseButton = document.getElementById("pauseButton");
+
+playButton.addEventListener("click", () => {
+  console.log("Play button clicked."); // Add this line
+  audio.play();
+  playButton.style.display = "none";
+  pauseButton.style.display = "inline";
+});
+
+pauseButton.addEventListener("click", () => {
+  console.log("Pause button clicked."); // Add this line
+  audio.pause();
+  pauseButton.style.display = "none";
+  playButton.style.display = "inline";
 });

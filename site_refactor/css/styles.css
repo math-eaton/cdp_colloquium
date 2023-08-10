@@ -46,6 +46,7 @@ body {
 .window.img {
   width: 100%;
   height: auto;
+  align-items: center;
   margin: 0; /* Reset margin */
   padding: 0; /* Reset padding */
 }
@@ -67,31 +68,6 @@ body {
   margin-top: 1vh;
   margin-bottom: 1vh;
   position: relative;
-}
-
-.part {
-  height: 100%;
-  border: 1px solid #eee;
-  padding-left: 1vw;
-  padding-right: 1vw;
-  text-align: left;
-  overflow: hidden;
-}
-
-.part img {
-  max-height: 100%;
-  width: auto;
-}
-
-.large {
-  flex-grow: 2;
-  text-align: right;
-}
-
-.small {
-  flex-grow: 1;
-  max-width: 33%;
-  text-align: left;
 }
 
 .ticker-container {
@@ -157,8 +133,7 @@ body {
   display: inline-block;
   z-index: 2;
   cursor: url('assets/cursors/cursor_15.cur'), auto;
-  visibility: hidden;
-  opacity: 0.95;
+  /* visibility: hidden; */
 }
 
 .floating img {
@@ -253,6 +228,34 @@ body {
   padding: 1%;
   margin: 0 !important;
 }
+
+#WFH_DJ {
+  position: relative;
+  justify-content: center; /* Center the windows horizontally */
+  align-items: center; /* Center the windows vertically */
+  max-width: 1200px; /* Set a maximum width for the container */
+  max-height: 70vh;
+  left: 8%;
+}
+
+.audio-player {
+  display: flex;
+  align-items: center;
+}
+
+#audioButton {
+  cursor: pointer;
+}
+
+#playButton,
+#pauseButton {
+  cursor: pointer;
+  width: 30px;
+  height: 30px;
+  margin: 0 10px;
+  z-index: 99999;
+}
+
 
 #radio_container {
   position: relative;
