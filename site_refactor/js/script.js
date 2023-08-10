@@ -416,3 +416,20 @@ function updateBouncingContainerSize() {
 // Call the function initially and whenever the window is resized
 updateBouncingContainerSize();
 window.addEventListener('resize', updateBouncingContainerSize);
+
+// change cursor when dragging windows
+$(document).ready(function() {
+  let maxZIndex = 1;
+
+  $(".window").draggable({
+      start: function(event, ui) {
+          maxZIndex++;
+          $(this).css('z-index', maxZIndex);
+          $(this).css('cursor', 'grabbing'); // Change cursor when dragging starts
+      },
+      stop: function(event, ui) {
+          $(this).css('z-index', maxZIndex);
+          $(this).css('cursor', 'grab'); // Change cursor back to "grab" when dragging stops
+      }
+  });
+});
