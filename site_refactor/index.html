@@ -80,37 +80,60 @@ or press escape to continue to webpage</textarea>
     </div>
 </div>
 
-<div class="window" id="WFH_DJ">
-    <div class="title-bar">
-        <div class="title-bar-text">WFH DJ</div>
-        <div class="title-bar-controls">
-            <button aria-label="Minimize"></button>
-            <button aria-label="Maximize" class="maximize-button"></button>
-            <button aria-label="Restore" class="restore-button"></button>
-            <button aria-label="Close"></button>
+<div class="windows-container">
+    <div class="window" id="WFH_DJ">
+        <div class="title-bar">
+            <div class="title-bar-text">WFH DJ</div>
+            <div class="title-bar-controls">
+                <button aria-label="Minimize"></button>
+                <button aria-label="Maximize" class="maximize-button"></button>
+                <button aria-label="Restore" class="restore-button"></button>
+                <button aria-label="Close"></button>
+            </div>
+        </div>
+        <div class="window-body">
+            <video width="860" height="450" autoplay muted loop>
+                <source src="assets/gif/WFH_DJ.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            </div>       
+        <div class="field-row audio-player" style="width: 200px" style="margin: 5%">
+            <label for="range26">Volume:</label>
+            <label for="range26">Low</label>
+            <input id="range26" type="range" min="0" max="1" step="0.01" value="0.5" />
+            <label for="range26">High</label>
+            <audio id="myAudio" loop>
+                <source src="assets/audio/WFH_DJ_processed.mp3" type="audio/mpeg">
+            </audio>
+            <img id="playButton" src="assets/sprites/loudspeaker_muted-0.png" alt="Play">
+            <img id="pauseButton" src="assets/sprites/loudspeaker_rays-0.png" alt="Pause" style="display: none;">
+        </div>
+        <div class="status-bar">
+        <p class="status-bar-field">Sonic Infrastructure</p>
+        <p class="status-bar-field">Data Sonification</p>
+        <p class="status-bar-field">Sound</p>
         </div>
     </div>
-    <div class="window-body">
-        <video width="860" height="450" autoplay muted loop>
-            <source src="assets/gif/WFH_DJ.mp4" type="video/mp4">
-            Your browser does not support the video tag.
-          </video>
-        </div>       
-    <div class="field-row audio-player" style="width: 200px" style="margin: 5%">
-        <label for="range26">Volume:</label>
-        <label for="range26">Low</label>
-        <input id="range26" type="range" min="0" max="1" step="0.01" value="0.5" />
-        <label for="range26">High</label>
-        <audio id="myAudio" loop>
-            <source src="assets/audio/WFH_DJ_processed.mp3" type="audio/mpeg">
-        </audio>
-        <img id="playButton" src="assets/sprites/loudspeaker_muted-0.png" alt="Play">
-        <img id="pauseButton" src="assets/sprites/loudspeaker_rays-0.png" alt="Pause" style="display: none;">
-    </div>
-    <div class="status-bar">
-      <p class="status-bar-field">Sonic Infrastructure</p>
-      <p class="status-bar-field">Data Sonification</p>
-      <p class="status-bar-field">Sound</p>
+
+    <div class="window half about">
+        <div class="title-bar">
+            <div class="title-bar-text">About: WFH DJ</div>
+            <div class="title-bar-controls">
+                <button aria-label="Minimize"></button>
+                <button aria-label="Maximize" class="maximize-button"></button>
+                <button aria-label="Restore" class="restore-button"></button>
+                <button aria-label="Close"></button>
+            </div>
+        </div>
+        <div class="window-body text-content">This is a patch or script written in Max/MSP, a visual coding language that is great for bridging audio inside and outside the computer.</p>
+
+            <p>The goal of this patch was to capture some of the thousands of miniature events that take place while using a computer during a typical workday and recontextualize those events into an audio piece - in this case a remix of Terry Rileys 1968 minimalist piece In C.</p>
+            </div>
+        <div class="status-bar">
+        <p class="status-bar-field">Spatial Infrastructure</p>
+        <p class="status-bar-field">Cartography + Processed Video</p>
+        <p class="status-bar-field">Space + Sight</p>
+        </div>
     </div>
 </div>
 

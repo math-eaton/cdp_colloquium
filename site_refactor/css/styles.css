@@ -24,6 +24,14 @@ body {
 
 }
 
+.windows-container {
+  display: flex; /* Set the parent container as a flex container */
+  justify-content: space-between; /* Distribute items along the main axis */
+  align-items: center; /* Align items vertically */
+  gap: 10px; /* Add spacing between windows */
+  margin-top: 20px; /* Add some top margin */
+}
+
 .window {
   animation: wobble 8s infinite;
   overflow: hidden; /* Hide content that overflows the window */
@@ -67,6 +75,22 @@ body {
   flex:1;
 }
 
+.window.about {
+  position: relative;
+  min-height: 10vh;
+  height:auto;
+  max-width: 20vw;
+  vertical-align: middle;
+  /* left:10%; */
+  margin-top: -8%;
+  margin-bottom:5vh;
+  /* color: #3008f5; */
+  font-size: larger;
+}
+
+/* .window.about .window-body {
+  color:#ff0000
+} */
 
 .ticker-container {
   display: block;
@@ -229,17 +253,19 @@ body {
 
 #WFH_DJ {
   position: relative;
-  justify-content: center; /* Center the windows horizontally */
-  align-items: center; /* Center the windows vertically */
+  /* justify-content: center; Center the windows horizontally */
+  /* align-items: center; Center the windows vertically */
   width: 50%;
   height: auto;
-  left: 15%;
+  /* left: 15%; */
   margin: 25vh;
 }
 
 .audio-player {
   display: flex;
   align-items: center;
+  margin-left:1%;
+
 }
 
 #audioButton {
