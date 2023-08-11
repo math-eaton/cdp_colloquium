@@ -12,7 +12,7 @@ body {
   margin: 0;
   padding: 0;
   height: 100%;
-  cursor: url('assets/cursors/arrow.cur'), auto;
+  cursor: url('../assets/cursors/arrow.cur'), auto;
   /* background: #3a6ea5; */
   background-image: url('../assets/index/Wind.jpg');
   background-size: cover;
@@ -21,6 +21,8 @@ body {
   background-attachment: fixed;
   overflow: auto;
   position: relative;
+  zoom: 100%; /* Adjust the value as needed */
+  transition: zoom 0.3s; /* Add a transition for smooth resizing */
 
 }
 
@@ -36,6 +38,7 @@ body {
 .window {
   animation: wobble 8s infinite;
   overflow: hidden; /* Hide content that overflows the window */
+  margin:2px;
   /* display: flex; Use flexbox to center content vertically and horizontally */
   /* flex-direction: column; Stack content vertically */
   /* align-items: center; Center content horizontally */
@@ -43,6 +46,13 @@ body {
 
 .title-bar {
   flex-shrink: 0; /* Prevent title bar from affecting the body height */
+  cursor: url('../assets/cursors/Cursor_15.cur'), auto;
+  margin-bottom: 2px;
+}
+
+.window.quarter {
+  width: calc(25% - 20px);
+  max-width: calc(100% - 40px);
 }
 
 .window.half {
@@ -55,16 +65,37 @@ body {
   max-width: calc(100% - 40px);
 }
 
-.window.img {
-  width: 100%;
-  height: auto;
-  margin: 0; /* Reset margin */
-  padding: 0; /* Reset padding */
-}
 
 .window-body {
   position: relative; /* Set to relative positioning */
-  height:100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: fit-content;
+  width: auto;
+  cursor: url('../assets/cursors/arrow.cur'), auto;
+  margin: 0;
+
+}
+
+/* Style videos, images, and text-content to fit their containers */
+.window-body video,
+.window-body img,
+.window-body .text-content {
+  max-width: 100%;
+  max-height: 100%;
+  height: auto;
+  cursor: url('../assets/cursors/arrow.cur'), auto;
+
+}
+
+.text-content {
+  margin-left:8px;
+  margin-right:8px;
+  margin-bottom:4px;
+  margin-top:0px;
+
 }
 
 .window-body:not(.text-content) {
@@ -88,6 +119,7 @@ body {
   margin-bottom:5vh;
   /* color: #3008f5; */
   font-size: larger;
+  z-index: 9001;
 }
 
 /* .window.about .window-body {
@@ -165,7 +197,6 @@ body {
   height: auto;
 }
 
-
 .bouncing-container {
   position: fixed;
   top: 0;
@@ -196,12 +227,12 @@ body {
 
 /* Add the "grab" cursor style to draggable windows */
 .window.ui-draggable {
-  cursor: grab;
+  cursor: url('../assets/cursors/Cursor_15.cur'), auto;
 }
 
 /* Change cursor to "grabbing" when dragging */
 .window.ui-draggable-dragging {
-  cursor: grabbing;
+  cursor: url('../assets/cursors/grabbing.cur'), auto;
 }
 
 #header {
@@ -215,6 +246,8 @@ body {
   width: 300px;
   display: inline-block;
   left: 70%;
+  cursor: url('../assets/cursors/Cursor_3.cur'), auto;
+  
 }
 
 #lineCanvas {
@@ -230,7 +263,7 @@ body {
   position: absolute;
   width: 100%;
   height: 100%;
-  z-index: 1000;
+  z-index: 90000;
   background-color: black;
   box-sizing: border-box;
   margin: 0 !important;
@@ -282,6 +315,29 @@ body {
   text-align: center; /* Center the text horizontally */
 }
 
+.field-row.audio-player {
+  display: flex;
+  /* flex-direction: column; */
+  align-items: left;
+  margin: 1px; /* Adjust margin as needed */
+}
+
+/* Ensure that the p tag expands properly */
+.field-row.audio-player p {
+  flex: 1; /* Allow the p tag to expand to fill the available space */
+}
+
+
+#bio{
+  left:20%;
+  margin:3vw;
+}
+
+#bio img {
+  max-width:30px;
+}
+
+
 #audioButton {
   cursor: pointer;
 }
@@ -298,21 +354,29 @@ body {
 }
 
 
-#radio_container {
+#radio-container {
   position: relative;
   display: flex;
   flex-wrap: wrap; /* Allow wrapping to create a grid layout */
   justify-content: center; /* Center the windows horizontally */
   align-items: center; /* Center the windows vertically */
-  /* gap: 2%; Add some spacing between child elements */
-  /* margin: 0 auto; Center the container horizontally */
-  max-width: 1050px; /* Set a maximum width for the container */
-  max-height: 60vh;
-  left: 8%;
+  /* max-height: 60vh; */
+  width:70%;
+  margin-left:5%;
+  margin-right:5%;
+  /* height: auto; */
+  /* left: 4%; */
 }
+
+#radio-container .about {
+  left: 5%;
+  top:10%;
+}
+
 
 #point, #area, #combined, #polyline {
   width: 30%; /* Each window takes up a bit less than half of the container's width with spacing */
+  height: auto;
   /* position:absolute; */
   /* padding: 2vw; */
   z-index: 2;

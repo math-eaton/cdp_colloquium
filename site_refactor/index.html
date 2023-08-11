@@ -27,9 +27,9 @@
 or press escape to continue to webpage</textarea>
 </div>
 
-<div class="window half">
+<div class="window quarter" id="bio">
     <div class="title-bar">
-        <div class="title-bar-text">NNada</div>
+        <div class="title-bar-text">SELF</div>
         <div class="title-bar-controls">
             <button aria-label="Minimize"></button>
             <button aria-label="Maximize" class="maximize-button"></button>
@@ -39,6 +39,14 @@ or press escape to continue to webpage</textarea>
     </div>
     <div class="window-body">
         <div class="">
+            <p>Matthew Heaton is a spatial artist, cartographer, and data scientist tethering geographies of sound. He believes in the social and political power of so-called &quot;obsolete&quot; technologies and their subversive potential.  
+            </p>
+            <br><br>
+            <img class="monochrome" src="assets/gif/link.gif"></img>
+            <img class="monochrome" src="assets/gif/cd.gif"></img>
+            <img class="monochrome" src="assets/gif/link.gif"></img>
+    
+    
         </div>
     </div>
     </div>
@@ -46,7 +54,7 @@ or press escape to continue to webpage</textarea>
 
   
 
-<div class="window half" id="window-ticker">
+<div class="window quarter" id="window-ticker">
     <div class="title-bar">
         <div class="title-bar-text">A Very Important Message</div>
         <div class="title-bar-controls">
@@ -58,17 +66,11 @@ or press escape to continue to webpage</textarea>
     </div>
     <div class="window-body ticker-container text-content">
         <p class="ticker-text">I LOVE TO MAKE WEBSITES FOR GSAPP!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!</p>
-        <br>
-        <img class="monochrome" src="assets/gif/link.gif"></img>
-        <img class="monochrome" src="assets/gif/link.gif"></img>
-        <img class="monochrome" src="assets/gif/link.gif"></img>
-        <img class="monochrome" src="assets/gif/link.gif"></img>
-
     </div>
     <div class="status-bar">
       <p class="status-bar-field">window ticker</p>
       <p class="status-bar-field">by aphex twin</p>
-      <p class="status-bar-field">CPU Usage: 1000000000%</p>
+      <p class="status-bar-field" id="cpu">CPU Usage: 1000000000%</p>
   </div>
 
 </div>
@@ -86,7 +88,7 @@ or press escape to continue to webpage</textarea>
         </div>
         <div class="window-body text-content">
             <p>A geographic radio receiver.</p>
-            <p>This application enables a user to survey an audio landscape constructed by internet radio ~transmissions~ tethered to particular geographic coordinates.</p>
+            <p>This application enables a user to survey an audio landscape constructed by internet radio &quot;transmissions&quot; tethered to particular geographic coordinates.</p>
             <p>The interpolated spaces between these discrete coordinates create alternative boundary regions constructed by radio and its attendant cultural affinities rather than the (often violently drawn) historical lines found on a political map.</p>
         </div>
         <div class="status-bar">
@@ -96,7 +98,7 @@ or press escape to continue to webpage</textarea>
         </div>
     </div>
 
-    <div class="window full">
+    <div class="window half">
         <div class="title-bar">
             <div class="title-bar-text">Peripheral Transmissions</div>
             <div class="title-bar-controls">
@@ -106,8 +108,8 @@ or press escape to continue to webpage</textarea>
                 <button aria-label="Close"></button>
             </div>
         </div>
-        <div class="window-body text-content">
-            <div class="floating">
+        <div class="window-body">
+            <div class="">
                 <img src="assets/gif/peripheralTransmissions.gif"></img>
             </div>
         </div>
@@ -189,8 +191,6 @@ or press escape to continue to webpage</textarea>
 </div>
 
 <div class="windows-container">
-
-
     <div class="window half about">
         <div class="title-bar">
             <div class="title-bar-text">About: WFH DJ</div>
@@ -201,12 +201,12 @@ or press escape to continue to webpage</textarea>
                 <button aria-label="Close"></button>
             </div>
         </div>
-        <div class="window-body text-content"><p>This is a patch [script] written in Max/MSP, a visual coding language that is great for bridging audio inside and outside the computer.</p>
+        <div class="window-body text-content"><p>This is a &quot;patch&quot; [script] written in Max/MSP, a visual coding language that is great for bridging audio inside and outside the computer.</p>
 
             <p>The goal of this patch was to capture some of the thousands of miniature events that take place while 
-                using a computer during a typical workday and recontextualize those events into an audio piece - in this case a remix of Terry Rileys 1968 minimalist piece [In C].</p>
+                using a computer during a typical workday and recontextualize those events into an audio piece - in this case a remix of Terry Riley&#8217;s 1968 minimalist piece &quot;In C&quot;.</p>
 
-            <p>Keypresses, mouse downs, and microphone transients trigger a count. At certain numeric thresholds, audio content and quality changes, sequencing the remix.</p>
+            <p>Keypresses, mouse downs, and microphone transients trigger a count. The frequency of these events defines an environmental energy level. At certain thresholds, audio content and quality changes, sequencing the remix.</p>
             </div>
         <div class="status-bar">
         <p class="status-bar-field">Sonic Infrastructure</p>
@@ -253,7 +253,7 @@ or press escape to continue to webpage</textarea>
 
 <svg id="lineCanvas"></svg>
 
-<div id="radio_container">
+<div class="windows-container"id="radio-container">
     <div class="window" id="point">
         <div class="title-bar">
             <div class="title-bar-text">FM Radio Towers - Zoom Level 15 Imagery</div>
@@ -265,7 +265,7 @@ or press escape to continue to webpage</textarea>
             </div>
         </div>
         <div class="window-body">
-            <div class="floating">
+            <div class="">
                 <img class="monochrome" src="assets/gif/processed_imagery_point.gif"></img>
             </div>
         </div>
@@ -287,7 +287,7 @@ or press escape to continue to webpage</textarea>
             </div>
         </div>
         <div class="window-body">
-            <div class="floating">
+            <div class="">
                 <img class="monochrome" src="assets/gif/processed_imagery_area.gif"></img>
             </div>
         </div>
@@ -298,6 +298,28 @@ or press escape to continue to webpage</textarea>
       </div>
     </div>
     
+    <div class="window half about">
+        <div class="title-bar">
+            <div class="title-bar-text">About: FM Radio Towers</div>
+            <div class="title-bar-controls">
+                <button aria-label="Minimize"></button>
+                <button aria-label="Maximize" class="maximize-button"></button>
+                <button aria-label="Restore" class="restore-button"></button>
+                <button aria-label="Close"></button>
+            </div>
+        </div>
+        <div class="window-body text-content"><p>These are the results of an exploratory exercise into the rich spatial data 
+            the Federal Communications Commission &#40;FCC&#41; maintains as part of the
+            </p>
+            <p>Visualized is a subset of </p>
+            </div>
+        <div class="status-bar">
+        <p class="status-bar-field">Community Infrastructure</p>
+        <p class="status-bar-field">Sonic Visualization</p>
+        <p class="status-bar-field">Sound + Sight</p>
+        </div>
+    </div>
+
     <div class="window half" id="combined">
         <div class="title-bar">
             <div class="title-bar-text">FM Radio Towers - Propagation Area With Contours</div>
@@ -309,7 +331,7 @@ or press escape to continue to webpage</textarea>
             </div>
         </div>
         <div class="window-body">
-            <div class="floating">
+            <div class="">
                 <img class="monochrome" src="assets/gif/combined.gif"></img>
             </div>
         </div>
@@ -331,7 +353,7 @@ or press escape to continue to webpage</textarea>
             </div>
         </div>
         <div class="window-body">
-            <div class="floating">
+            <div class="">
                 <img class="monochrome" src="assets/gif/processed_imagery_polyline.gif"></img>
             </div>
         </div>

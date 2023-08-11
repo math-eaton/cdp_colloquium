@@ -387,7 +387,7 @@ document.getElementById('command-prompt').addEventListener('keydown', function(e
 
   // Define the unique messages
   var messages = [
-    'Just kidding they all do the same thing',
+    'just kidding they all do the same thing',
     'Beep boop I am a computer',
     'Im getting ready to compute',
     'god i hope this works',
@@ -506,3 +506,39 @@ pauseButton.addEventListener("click", () => {
   pauseButton.style.display = "none";
   playButton.style.display = "inline";
 });
+
+// Function to update the zoom value based on window width
+function updateZoom() {
+  const windowWidth = window.innerWidth;
+  let zoomValue = 1;
+
+  // Adjust the zoom value based on the window width
+  if (windowWidth < 600) {
+    zoomValue = 0.8;
+  } else if (windowWidth < 1000) {
+    zoomValue = 0.9;
+  }
+
+  // Apply the new zoom value to the body
+  document.body.style.zoom = zoomValue;
+}
+
+// Initial update on page load
+updateZoom();
+
+// Listen for the window resize event
+window.addEventListener('resize', updateZoom);
+
+
+/////// update CPU ticker text
+const cpuUsageElement = document.querySelector('.status-bar-field#cpu');
+let cpuUsage = 1000000000;
+
+function updateCpuUsage() {
+  const randomIncrement = Math.floor(Math.random() * 30) + 1;
+  const randomSign = Math.random() < 0.5 ? -1 : 1;
+  cpuUsage += randomIncrement * randomSign;
+  cpuUsageElement.textContent = `CPU Usage: ${cpuUsage}%`;
+}
+
+setInterval(updateCpuUsage, 1);
