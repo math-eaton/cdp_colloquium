@@ -140,8 +140,8 @@ var images = [
   // Initialize the index of the current image
   var currentImageIndex = 0;
 
-  // Loop through all bouncing containers
-  for (var i = 0; i < bouncingContainers.length; i++) {
+    // Loop through all bouncing containers
+    for (var i = 0; i < bouncingContainers.length; i++) {
       var bouncingContainer = bouncingContainers[i];
 
       // Number of bouncing divs
@@ -155,9 +155,14 @@ var images = [
           // Get the image URL based on the current index
           var selectedImage = images[currentImageIndex];
 
-          // Set the background image
-          div.style.backgroundImage = 'url(' + selectedImage + ')';
+          // Randomly choose a scale factor between 0.95 and 1.05
+          var scaleFactor = 0.95 + Math.random() * 0.1;
+          var resizedImage = `url(${selectedImage})`;
+
+          // Set the background image with the resized image
+          div.style.backgroundImage = resizedImage;
           div.style.backgroundSize = 'cover'; // Cover the entire div
+          div.style.transform = `scale(${scaleFactor})`; // Apply the scaling
 
           bouncingContainer.appendChild(div);
 
@@ -433,7 +438,7 @@ function closeSplash() {
 // Array of image URLs for background images
 const backgroundImages = [
     'assets/wallpapers/wind.jpg',
-    'assets/wallpapers/clouds.jpg',
+    // 'assets/wallpapers/clouds.jpg',
     'assets/wallpapers/diet_bliss.jpg',
   ];
   
