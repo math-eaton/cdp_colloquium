@@ -1,3 +1,13 @@
+////////
+// refresh box
+const element = document.getElementsByClassName("refresh-button");
+element.addEventListener("click", function() {
+  console.log("AAA")
+      // Reload the page
+      location.reload();
+});
+
+
 window.addEventListener('load', function() {
   var windows = document.getElementsByClassName('window');
   var svg = createSvgElement();
@@ -306,10 +316,10 @@ function animateDiv(div, x, y, vx, vy, containerHeight) {
   
   // URLs of the GIFs
 const gifUrls = [
-    'assets/gif/processed_imagery_area.gif',
-    'assets/gif/processed_imagery_point.gif',
-    'assets/gif/processed_imagery_polyline.gif',
-    'assets/gif/combined.gif',
+    '../assets/gif/processed_imagery_area.gif',
+    '../assets/gif/processed_imagery_point.gif',
+    '../assets/gif/processed_imagery_polyline.gif',
+    '../assets/gif/combined.gif',
   ];
   
   // Preload the GIFs and attach load event listeners
@@ -438,7 +448,7 @@ function closeSplash() {
 // Array of image URLs for background images
 const backgroundImages = [
     'assets/wallpapers/wind.jpg',
-    // 'assets/wallpapers/clouds.jpg',
+    'assets/wallpapers/clouds.jpg',
     'assets/wallpapers/diet_bliss.jpg',
   ];
   
@@ -547,3 +557,5 @@ function updateCpuUsage() {
 }
 
 setInterval(updateCpuUsage, 1);
+
+

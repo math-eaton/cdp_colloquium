@@ -422,6 +422,10 @@ body {
   margin-left: -10%
 }
 
+#refresh-button{
+  /* color: red; */
+}
+
 h1 { font-family: Papyrus, fantasy; font-size: 10px; font-style: normal; font-variant: small-caps; font-weight: 700; line-height: 11px; } 
 
 @font-face {
