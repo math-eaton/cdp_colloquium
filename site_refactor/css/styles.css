@@ -26,6 +26,11 @@ body {
 
 }
 
+button {
+  cursor: url('../assets/cursors/Cursor_15.cur'), auto;
+  
+}
+
 .windows-container {
   display: flex; /* Set the parent container as a flex container */
   justify-content: space-between; /* Distribute items along the main axis */

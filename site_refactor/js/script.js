@@ -125,9 +125,9 @@ $(document).ready(function() {
 
 var images = [
   'assets/sprites/computer-4.png',
-  'assets/sprites/tree-0.png',
-  'assets/sprites/users-2.png',
-  'assets/sprites/mouse_snap.png',
+  'assets/sprites/channels-2.png',
+  'assets/sprites/entire_network_globe-0.png',
+  'assets/sprites/msg_error-0.png',
   'assets/sprites/world_phonereceiver.png',
   'assets/sprites/magnifying_glass-0.png',
   'assets/sprites/cd_drive-3.png',
@@ -137,7 +137,7 @@ var images = [
 ];
 
   document.addEventListener('DOMContentLoaded', function() {
-    var sections = document.querySelectorAll('.section');
+    var sections = document.querySelectorAll('.window');
     var floatingContainer = document.querySelector('.floating-container');
     var bouncingContainers = document.getElementsByClassName('bouncing-container'); // Get elements by class name
     var windows = document.querySelectorAll('.window'); // Get all window elements
@@ -285,6 +285,22 @@ var images = [
             windowBody.classList.toggle('hidden');
         });
     });
+
+  // Get a reference to the container element
+  // const contentContainer = document.getElementById('content-container');
+
+  // // Fetch the content of the second HTML file
+  // fetch('zine_inline.html')
+  //   .then(response => response.text())
+  //   .then(html => {
+  //     // Insert the fetched HTML content into the container
+  //     contentContainer.innerHTML = html;
+  //     console.log("INSENRGTAS")
+  //   })
+  //   .catch(error => {
+  //     console.error('Error fetching content:', error);
+  //   });
+
 });
 
 
@@ -559,5 +575,4 @@ function updateCpuUsage() {
 }
 
 setInterval(updateCpuUsage, 1);
-
 
