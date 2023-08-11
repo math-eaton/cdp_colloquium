@@ -328,7 +328,7 @@ const gifUrls = [
   
   // Function to display the GIFs
   function displayGifs() {
-    const gifs = document.querySelectorAll('.floating img');
+    const gifs = document.querySelectorAll('.monochrome');
     gifs.forEach(gif => {
       gif.style.visibility = 'visible'; // or gif.style.display = 'block';
     });
