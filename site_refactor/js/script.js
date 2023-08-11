@@ -1,12 +1,11 @@
 ////////
 // refresh box
-const element = document.getElementsByClassName("refresh-button");
+var element = document.getElementById("refresh-button");
 element.addEventListener("click", function() {
-  console.log("AAA")
-      // Reload the page
-      location.reload();
+  console.log("AAA");
+  // Reload the page
+  location.reload();
 });
-
 
 window.addEventListener('load', function() {
   var windows = document.getElementsByClassName('window');
@@ -106,6 +105,9 @@ $(document).ready(function() {
   //     }
   // });
 });
+
+
+
 
 ////// bouncer animation
 
