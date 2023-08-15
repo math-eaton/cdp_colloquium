@@ -7,6 +7,14 @@ element.addEventListener("click", function() {
   location.reload();
 });
 
+var element = document.getElementById("refresh-button-2");
+element.addEventListener("click", function() {
+  console.log("AAA");
+  // Reload the page
+  location.reload();
+});
+
+
 window.addEventListener('load', function() {
   var windows = document.getElementsByClassName('window');
   var svg = createSvgElement();
@@ -136,170 +144,142 @@ var images = [
   'assets/sprites/help_question_mark-0.png',
 ];
 
-  document.addEventListener('DOMContentLoaded', function() {
-    var sections = document.querySelectorAll('.window');
-    var floatingContainer = document.querySelector('.floating-container');
-    var bouncingContainers = document.getElementsByClassName('bouncing-container'); // Get elements by class name
-    var windows = document.querySelectorAll('.window'); // Get all window elements
+document.addEventListener('DOMContentLoaded', function() {
 
-    // Calculate the height based on the position of the float-container
-    var height = 0;
-    for (var i = 0; i < sections.length; i++) {
-        if (sections[i] === floatingContainer) break;
-        height += sections[i].offsetHeight + 2; // 2 is for the top and bottom margin
+  const cpuUsageElement = document.getElementById('cpu');
+  let cpuUsage = 0;
+
+  function updateCpuUsage() {
+    cpuUsage += Math.floor(Math.random() * 30) + 1;
+  
+    // Set a threshold beyond which scientific notation should be avoided
+    const scientificNotationThreshold = 1e6;
+  
+    // Check if the CPU usage is below the threshold
+    if (cpuUsage < scientificNotationThreshold) {
+      cpuUsageElement.textContent = `CPU Usage: ${cpuUsage.toFixed(0)}%`;
+    } else {
+      cpuUsageElement.textContent = `CPU Usage: ${cpuUsage.toPrecision(6)}%`;
     }
+  }
+  
+  setInterval(updateCpuUsage, 1);
+  
+  var sections = document.querySelectorAll('.window');
+  var floatingContainer = document.querySelector('.floating-container');
+  var bouncingContainers = document.getElementsByClassName('bouncing-container');
+  var windows = document.querySelectorAll('.window');
 
-  // Initialize the index of the current image
-  var currentImageIndex = 0;
-
-    // Loop through all bouncing containers
-    for (var i = 0; i < bouncingContainers.length; i++) {
-      var bouncingContainer = bouncingContainers[i];
-
-      // Number of bouncing divs
-      var numDivs = 10;
-
-      // Create and animate the bouncing divs
-      for (var j = 0; j < numDivs; j++) {
-          var div = document.createElement('div');
-          div.className = 'bouncing';
-
-          // Get the image URL based on the current index
-          var selectedImage = images[currentImageIndex];
-
-          // Randomly choose a scale factor between 0.95 and 1.05
-          var scaleFactor = 0.95 + Math.random() * 0.1;
-          var resizedImage = `url(${selectedImage})`;
-
-          // Set the background image with the resized image
-          div.style.backgroundImage = resizedImage;
-          div.style.backgroundSize = 'cover'; // Cover the entire div
-          div.style.transform = `scale(${scaleFactor})`; // Apply the scaling
-
-          bouncingContainer.appendChild(div);
-
-          // Increment the index and reset if necessary
-          currentImageIndex++;
-          if (currentImageIndex >= images.length) {
-              currentImageIndex = 0;
-          }
-
-          // Initial position and velocity
-          var x = Math.random() * document.documentElement.scrollWidth;
-          var y = Math.random() * document.documentElement.scrollHeight;
-          var vx = (Math.random() - 0.5) * 0.85;
-          var vy = (Math.random() - 0.5) * 0.85;
-
-          // Animate the div
-          animateDiv(div, x, y, vx, vy, height); // Pass the calculated height
-      }
+  var height = 0;
+  for (var i = 0; i < sections.length; i++) {
+    if (sections[i] === floatingContainer) break;
+    height += sections[i].offsetHeight + 2;
   }
 
-    ///
-    // add audio player
-    const audio = document.getElementById("myAudio");
-    const playButton = document.getElementById("playButton");
-    const pauseButton = document.getElementById("pauseButton");
-    const volumeSlider = document.getElementById("range26");
+  var currentImageIndex = 0;
 
-    // Set up play and pause button click listeners
-    playButton.addEventListener("click", () => {
-      audio.play();
-      playButton.style.display = "none";
-      pauseButton.style.display = "inline";
-    });
+  for (var i = 0; i < bouncingContainers.length; i++) {
+    var bouncingContainer = bouncingContainers[i];
+    var numDivs = 10;
 
-    pauseButton.addEventListener("click", () => {
-      audio.pause();
-      pauseButton.style.display = "none";
-      playButton.style.display = "inline";
-    });
+    for (var j = 0; j < numDivs; j++) {
+      var div = document.createElement('div');
+      div.className = 'bouncing';
 
-    // Set up volume slider change listener
-    volumeSlider.addEventListener("input", () => {
-      audio.volume = volumeSlider.value;
-    });
+      var selectedImage = images[currentImageIndex];
+      var scaleFactor = 0.95 + Math.random() * 0.1;
+      var resizedImage = `url(${selectedImage})`;
 
-    // Initialize audio volume to slider value
+      div.style.backgroundImage = resizedImage;
+      div.style.backgroundSize = 'cover';
+      div.style.transform = `scale(${scaleFactor})`;
+
+      bouncingContainer.appendChild(div);
+
+      currentImageIndex++;
+      if (currentImageIndex >= images.length) {
+        currentImageIndex = 0;
+      }
+
+      var x = Math.random() * document.documentElement.scrollWidth;
+      var y = Math.random() * document.documentElement.scrollHeight;
+      var vx = (Math.random() - 0.5) * 0.85;
+      var vy = (Math.random() - 0.5) * 0.85;
+
+      animateDiv(div, x, y, vx, vy, height);
+    }
+  }
+
+  const audio = document.getElementById("myAudio");
+  const playButton = document.getElementById("playButton");
+  const pauseButton = document.getElementById("pauseButton");
+  const volumeSlider = document.getElementById("range26");
+
+  playButton.addEventListener("click", () => {
+    audio.play();
+    playButton.style.display = "none";
+    pauseButton.style.display = "inline";
+  });
+
+  pauseButton.addEventListener("click", () => {
+    audio.pause();
+    pauseButton.style.display = "none";
+    playButton.style.display = "inline";
+  });
+
+  volumeSlider.addEventListener("input", () => {
     audio.volume = volumeSlider.value;
+  });
 
-  
+  audio.volume = volumeSlider.value;
 
-    // Adjust window widths randomly
-    // windows.forEach(function(windowElement) {
-    //     var currentWidth = windowElement.offsetWidth;
-    //     var randomPercentage = Math.random() * 0.4 + 0.45; // Random value between 0.9 and 1.1
-    //     var newWidth = currentWidth * randomPercentage;
+  windows.forEach(windowElement => {
+    const windowBody = windowElement.querySelector('.window-body');
+    const maximizeButton = windowElement.querySelector('.maximize-button');
+    const restoreButton = windowElement.querySelector('.restore-button');
+    const closeButton = windowElement.querySelector('[aria-label="Close"]');
+    const minimizeButton = windowElement.querySelector('[aria-label="Minimize"]');
 
-    //     windowElement.style.width = newWidth + 'px';
-    // });
+    restoreButton.style.display = 'none';
 
-    // Code for attaching event listeners to window buttons
-    windows.forEach(windowElement => {
-      const windowBody = windowElement.querySelector('.window-body');
-      const maximizeButton = windowElement.querySelector('.maximize-button');
-      const restoreButton = windowElement.querySelector('.restore-button');
-      const closeButton = windowElement.querySelector('[aria-label="Close"]');
-      const minimizeButton = windowElement.querySelector('[aria-label="Minimize"]');
+    maximizeButton.addEventListener('click', () => {
+      if (windowElement.style.position !== 'fixed') {
+        windowElement.dataset.originalPosition = windowElement.style.position;
+        windowElement.dataset.originalWidth = windowElement.style.width;
+        windowElement.dataset.originalHeight = windowElement.style.height;
+        windowElement.dataset.originalZIndex = windowElement.style.zIndex;
 
-      // Hide the Restore button on page load
-      restoreButton.style.display = 'none';
-
-      maximizeButton.addEventListener('click', () => {
-        if (windowElement.style.position !== 'fixed') {
-            // Save the original position, dimensions, and z-index
-            windowElement.dataset.originalPosition = windowElement.style.position;
-            windowElement.dataset.originalWidth = windowElement.style.width;
-            windowElement.dataset.originalHeight = windowElement.style.height;
-            windowElement.dataset.originalZIndex = windowElement.style.zIndex;
-            
-            // Set the element to fixed position
-            windowElement.style.position = 'fixed';
-            windowElement.style.width = '100vw';
-            windowElement.style.height = '100vh';
-            windowElement.style.top = '0';
-            windowElement.style.left = '0';
-            windowElement.style.zIndex = '9999'; // Set a high z-index
-            maximizeButton.style.display = 'none'; // Hide the Maximize button
-            restoreButton.style.display = 'block'; // Show the Restore button
-        }
+        windowElement.style.position = 'fixed';
+        windowElement.style.width = '100vw';
+        windowElement.style.height = '100vh';
+        windowElement.style.top = '0';
+        windowElement.style.left = '0';
+        windowElement.style.zIndex = '9999';
+        maximizeButton.style.display = 'none';
+        restoreButton.style.display = 'block';
+      }
     });
 
     restoreButton.addEventListener('click', () => {
-        if (windowElement.style.position === 'fixed') {
-            // Restore the original position, dimensions, and z-index
-            windowElement.style.position = windowElement.dataset.originalPosition;
-            windowElement.style.width = windowElement.dataset.originalWidth;
-            windowElement.style.height = windowElement.dataset.originalHeight;
-            windowElement.style.zIndex = windowElement.dataset.originalZIndex;
-            maximizeButton.style.display = 'block'; // Show the Maximize button
-            restoreButton.style.display = 'none'; // Hide the Restore button
-        }
+      if (windowElement.style.position === 'fixed') {
+        windowElement.style.position = windowElement.dataset.originalPosition;
+        windowElement.style.width = windowElement.dataset.originalWidth;
+        windowElement.style.height = windowElement.dataset.originalHeight;
+        windowElement.style.zIndex = windowElement.dataset.originalZIndex;
+        maximizeButton.style.display = 'block';
+        restoreButton.style.display = 'none';
+      }
     });
 
-        closeButton.addEventListener('click', () => {
-            windowElement.remove();
-        });
-
-        minimizeButton.addEventListener('click', () => {
-            windowBody.classList.toggle('hidden');
-        });
+    closeButton.addEventListener('click', () => {
+      windowElement.remove();
     });
 
-  // Get a reference to the container element
-  // const contentContainer = document.getElementById('content-container');
+    minimizeButton.addEventListener('click', () => {
+      windowBody.classList.toggle('hidden');
+    });
+  });
 
-  // // Fetch the content of the second HTML file
-  // fetch('zine_inline.html')
-  //   .then(response => response.text())
-  //   .then(html => {
-  //     // Insert the fetched HTML content into the container
-  //     contentContainer.innerHTML = html;
-  //     console.log("INSENRGTAS")
-  //   })
-  //   .catch(error => {
-  //     console.error('Error fetching content:', error);
-  //   });
 
 });
 
@@ -387,7 +367,7 @@ closeButton.addEventListener('click', () => {
 // Minimize Button
 minimizeButton.addEventListener('click', () => {
   windowBody.classList.toggle('hidden');
-  console.log("MINN")
+  // console.log("MINN")
 });
 
 // Add the 'hide-scrollbar' class to the body on page load
@@ -400,6 +380,7 @@ var currentMessage = ''; // Variable to store the current message
 document.getElementById('command-prompt').addEventListener('keydown', function(event) {
   // Check if the pressed key is the "Escape" key
   if (event.key === 'Escape') {
+    // console.log("CLOSED")
     closeSplash();
     return; // Exit the function if the "Escape" key was pressed
   }
@@ -421,10 +402,10 @@ document.getElementById('command-prompt').addEventListener('keydown', function(e
   // Define the unique messages
   var messages = [
     'just kidding they all do the same thing',
-    'Beep boop I am a computer',
-    'Im getting ready to compute',
-    'god i hope this works',
-    'AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'
+    'Im a computer',
+    'Stop all the downloading',
+    'beepbeepbeepbeepbeepbeepbeepbeepbeepbeep',
+    'AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'
   ];
 
   // Define the time intervals for displaying the messages (in milliseconds)
@@ -561,18 +542,3 @@ updateZoom();
 
 // Listen for the window resize event
 window.addEventListener('resize', updateZoom);
-
-
-/////// update CPU ticker text
-const cpuUsageElement = document.querySelector('.status-bar-field#cpu');
-let cpuUsage = 1000000000;
-
-function updateCpuUsage() {
-  const randomIncrement = Math.floor(Math.random() * 30) + 1;
-  const randomSign = Math.random() < 0.5 ? -1 : 1;
-  cpuUsage += randomIncrement * randomSign;
-  cpuUsageElement.textContent = `CPU Usage: ${cpuUsage}%`;
-}
-
-setInterval(updateCpuUsage, 1);
-

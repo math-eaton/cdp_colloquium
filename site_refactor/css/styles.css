@@ -23,6 +23,7 @@ body {
   position: relative;
   zoom: 100%; /* Adjust the value as needed */
   transition: zoom 0.3s; /* Add a transition for smooth resizing */
+  /* margin-top: -15px; cut off the cdp site header */
 
 }
 
@@ -336,8 +337,9 @@ button {
 #bio{
   font-size: small;
   left:20%;
-  margin:3vw;
-  width:30%;
+  margin:2vw;
+  margin-bottom: 1vh;
+  width:40%;
 }
 
 #bio img {
