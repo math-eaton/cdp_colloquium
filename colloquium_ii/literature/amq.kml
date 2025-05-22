@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/css" href="" ?>
+<kml xmlns="http://www.opengis.net/kml/2.2">
+<Document>
+
+<name>E 530 kHz 0.5 and 2.0 mV/m AM Daytime Groundwave Contours for </name>
+ <!-- This defines our vantage point, looking down at the contour.  -->
+ <LookAt>
+    <longitude>-98.585522</longitude>
+    <latitude>39.833333</latitude>
+    <altitude></altitude>
+    <tilt>0</tilt>
+    <range>11000000</range>
+  </LookAt>
+
+<!--Close document-->
+</Document>
+</kml>
